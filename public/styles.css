@@ -11,6 +11,13 @@
   font-stretch: 75% 112.5%;
   font-display: swap;
 }
+/* System mono scaled to Martian Mono's width at 112.5% (0.75em vs 0.6em per glyph),
+   so the headline wraps the same way before the real font arrives: no layout shift. */
+@font-face {
+  font-family: "Martian Fallback";
+  src: local("Menlo"), local("Courier New"), local("DejaVu Sans Mono"), local("Roboto Mono");
+  size-adjust: 125%;
+}
 
 /* Radius rule: 12px on everything. */
 :root {
@@ -78,7 +85,7 @@ p { color: var(--muted); }
 }
 /* Desktop: wide poster face. Too wide for phones, so they keep JetBrains Mono. */
 @media (min-width: 768px) {
-  .hero h1 { font-family: "Martian Mono", "JetBrains Mono", monospace; font-stretch: 112.5%; font-size: clamp(3rem, 7.4vw, 8.5rem); letter-spacing: -0.05em; }
+  .hero h1 { font-family: "Martian Mono", "Martian Fallback", monospace; font-stretch: 112.5%; font-size: clamp(3rem, 7.4vw, 7.25rem); letter-spacing: -0.05em; }
 }
 .ctas { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: clamp(1.5rem, 4vh, 2.5rem); }
 @media (max-width: 767px) {
