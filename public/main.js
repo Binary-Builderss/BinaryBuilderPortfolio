@@ -3,6 +3,16 @@
 
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+// Call dialog. Numbers are assembled on tap so no full phone number sits in the HTML for scrapers.
+const phones = { giuseppe: ["+39", "351", "906", "9868"], michele: ["+39", "348", "533", "4653"] };
+const callDialog = document.getElementById("call");
+document.querySelector("[data-open-call]").addEventListener("click", () => callDialog.showModal());
+callDialog.querySelectorAll("[data-call]").forEach((btn) =>
+  btn.addEventListener("click", () => {
+    location.href = "tel:" + phones[btn.dataset.call].join("");
+    callDialog.close();
+  }));
+
 // Headline: wrap each letter, show a random bit over it, resolve left to right.
 const h1 = document.querySelector(".decode");
 if (!reduce) {

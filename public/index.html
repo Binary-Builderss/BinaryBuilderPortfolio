@@ -37,8 +37,7 @@
     <div class="ctas">
       <!-- contactus@ is forwarded by Cloudflare Email Routing. -->
       <a class="btn btn-primary btn-lg" href="mailto:contactus@binarybuilders.dev">contactus@binarybuilders.dev</a>
-      <a class="btn btn-ghost btn-lg" href="tel:+393519069868">Call Giuseppe</a>
-      <a class="btn btn-ghost btn-lg" href="tel:+393485334653">Call Michele</a>
+      <button class="btn btn-ghost btn-lg" type="button" data-open-call>Call us</button>
     </div>
   </main>
 
@@ -46,5 +45,15 @@
     <p>Software engineering studio<br>Java, Go, C#, C++, React, Next.js, Salesforce</p>
     <p>binarybuilders.dev<br>&copy; 2026 BinaryBuilders</p>
   </footer>
+
+  <!-- Opened by main.js, which also builds the tel: links so the numbers are not in this file. -->
+  <dialog id="call" class="call" closedby="any" aria-labelledby="call-title">
+    <h2 id="call-title">Who would you like to call?</h2>
+    <div class="call-options">
+      <button class="btn btn-ghost btn-lg" type="button" data-call="giuseppe">Giuseppe Scappaticci</button>
+      <button class="btn btn-ghost btn-lg" type="button" data-call="michele">Michele Sabatino</button>
+    </div>
+    <form method="dialog"><button class="btn btn-sm">Cancel</button></form>
+  </dialog>
 </body>
 </html>
