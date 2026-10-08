@@ -34,9 +34,11 @@ if (!reduce) {
 const canvas = document.querySelector(".bits");
 const ctx = canvas.getContext("2d");
 const CELL = 18;      // px between bits
-const RADIUS = 140;   // px of cursor influence
-let cols = 0, rows = 0, bits, colors, last = 0;
+let radius = 140;     // px of highlight, smaller on narrow screens
+let cols = 0, rows = 0, w = 0, h = 0, bits, colors, last = 0;
 const pointer = { x: -1e4, y: -1e4 };
+// No hover on touch screens: the highlight wanders on its own instead. A real mouse takes over.
+let wander = matchMedia("(hover: none)").matches;
 
 function readColors() {
   const s = getComputedStyle(document.documentElement);
@@ -49,17 +51,24 @@ const field = (x, y, t) =>
 
 function draw(time) {
   const t = time / 2400;
-  ctx.clearRect(0, 0, cols * CELL, rows * CELL);
+  if (wander) {
+    // Lissajous path: smooth, never repeats quickly, stays inside the screen.
+    pointer.x = w * (0.5 + 0.4 * Math.sin(t * 1.3));
+    pointer.y = h * (0.5 + 0.4 * Math.sin(t * 0.9 + 1));
+  }
+  ctx.clearRect(0, 0, w, h);
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
       const v = field(c, r, t);
       const x = c * CELL + CELL / 2, y = r * CELL + CELL / 2;
       const d = Math.hypot(x - pointer.x, y - pointer.y);
-      const near = d < RADIUS;
-      if (v < 0.2 && !near) continue;
+      const near = d < radius;
+      // Ambient bits fade out toward the footer; the highlight shows everywhere.
+      const fade = Math.min(1, Math.max(0, (0.85 * h - y) / (0.55 * h)));
+      if (!near && (v < 0.2 || fade === 0)) continue;
       const i = r * cols + c;
       if (Math.random() < (near ? 0.08 : 0.003)) bits[i] ^= 1;
-      ctx.globalAlpha = near ? 0.9 - (d / RADIUS) * 0.6 : (v - 0.2) * 0.45;
+      ctx.globalAlpha = near ? 0.9 - (d / radius) * 0.6 : (v - 0.2) * 0.45 * fade;
       ctx.fillStyle = near ? colors.accent : colors.ink;
       ctx.fillText(bits[i] ? "1" : "0", x, y);
     }
@@ -75,6 +84,8 @@ function resize() {
   ctx.font = '500 12px "Geist Mono", monospace';
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
+  w = width; h = height;
+  radius = Math.min(140, width * 0.3);
   cols = Math.ceil(width / CELL);
   rows = Math.ceil(height / CELL);
   bits = Uint8Array.from({ length: cols * rows }, () => (Math.random() < 0.5 ? 1 : 0));
@@ -86,7 +97,12 @@ function loop(now) {
   requestAnimationFrame(loop);
 }
 
-addEventListener("pointermove", (e) => { pointer.x = e.clientX; pointer.y = e.clientY; }, { passive: true });
+addEventListener("pointermove", (e) => {
+  if (e.pointerType !== "mouse") return;
+  wander = false;
+  pointer.x = e.clientX;
+  pointer.y = e.clientY;
+}, { passive: true });
 document.documentElement.addEventListener("pointerleave", () => { pointer.x = pointer.y = -1e4; });
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { readColors(); draw(last); });
 
