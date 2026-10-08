@@ -1,20 +1,25 @@
 @font-face {
-  font-family: "Geist Mono";
-  src: url("fonts/geist-mono.woff2") format("woff2");
-  font-weight: 100 900;
+  font-family: "JetBrains Mono";
+  src: url("fonts/jetbrains-mono.woff2") format("woff2");
+  font-weight: 100 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Martian Mono";
+  src: url("fonts/martian-mono.woff2") format("woff2");
+  font-weight: 100 800;
+  font-stretch: 75% 112.5%;
   font-display: swap;
 }
 
 /* Radius rule: 12px on everything. */
 :root {
   --bg: #fafafa;
-  --surface: #f1f1f3;
   --text: #18181b;
   --muted: #52525b;
   --line: #dcdce1;
   --accent: #0066ff;
   --on-accent: #fafafa;
-  --danger: #c4320a;
   --radius: 12px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   color-scheme: light;
@@ -22,11 +27,9 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #0a0a0c;
-    --surface: #17171a;
     --text: #f2f2f4;
     --muted: #a1a1aa;
     --line: #2a2a30;
-    --danger: #f97066;
     color-scheme: dark;
   }
 }
@@ -36,7 +39,7 @@ body {
   /* One screen: header, headline, footer. */
   display: grid; grid-template-rows: auto 1fr auto; min-height: 100dvh;
   background: var(--bg); color: var(--text);
-  font: 400 .95rem/1.6 "Geist Mono", ui-monospace, monospace;
+  font: 400 .95rem/1.6 "JetBrains Mono", ui-monospace, monospace;
   -webkit-font-smoothing: antialiased;
 }
 a { color: inherit; text-underline-offset: 3px; }
@@ -59,10 +62,11 @@ p { color: var(--muted); }
 .btn:active { transform: translateY(1px) scale(.98); }
 .btn-primary { background: var(--accent); color: var(--on-accent); }
 .btn-primary:hover { background: color-mix(in oklab, var(--accent) 85%, #0a0a0c); }
-.btn-ghost { border-color: var(--line); }
+.btn-ghost { border-color: var(--line); background: var(--bg); }
 .btn-ghost:hover { border-color: var(--muted); }
 .btn-sm { padding: .45rem .9rem; font-size: .9rem; }
 .btn-lg { padding: 1rem 1.75rem; font-size: 1.05rem; }
+.btn .who { color: var(--muted); margin-right: .75ch; }
 
 .top { display: flex; align-items: center; height: 72px; }
 .brand img { display: block; height: 32px; width: auto; }
@@ -73,7 +77,15 @@ p { color: var(--muted); }
   font-size: clamp(3.25rem, 10vw, 9.5rem); font-weight: 800;
   letter-spacing: -0.04em; line-height: 1;
 }
+/* Desktop: wide poster face. Too wide for phones, so they keep JetBrains Mono. */
+@media (min-width: 768px) {
+  .hero h1 { font-family: "Martian Mono", "JetBrains Mono", monospace; font-stretch: 112.5%; font-size: clamp(3rem, 7.4vw, 8.5rem); letter-spacing: -0.05em; }
+}
 .ctas { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: clamp(1.5rem, 4vh, 2.5rem); }
+@media (max-width: 767px) {
+  .ctas { display: grid; gap: .5rem; }
+  .ctas .btn-lg { padding: .8rem 1.25rem; font-size: 1rem; }
+}
 
 /* Decode effect: the real letter keeps its slot (transparent), a bit sits on top until resolved.
    Monospace means the bit and the letter are the same width. */
@@ -92,44 +104,7 @@ p { color: var(--muted); }
 .footer p:last-child { text-align: right; }
 @media (max-width: 767px) { .footer p:last-child { text-align: left; } }
 
-/* Contact dialog */
-.contact {
-  width: min(100% - 2rem, 720px); max-height: calc(100dvh - 2rem); margin: auto;
-  padding: clamp(1.25rem, 4vw, 2.25rem);
-  background: var(--bg); color: var(--text);
-  border: 1px solid var(--line); border-radius: var(--radius);
-  box-shadow: 0 24px 80px color-mix(in oklab, var(--text) 14%, transparent);
-}
-.contact::backdrop { background: color-mix(in oklab, var(--bg) 55%, transparent); backdrop-filter: blur(6px); }
-dialog.contact:target { display: block; } /* no-JS fallback */
-.contact-head { display: flex; justify-content: space-between; align-items: start; gap: 1rem; margin-bottom: 1.5rem; }
-.contact h2 { font-size: clamp(1.3rem, 3vw, 1.7rem); letter-spacing: -0.03em; line-height: 1.2; }
-
-.contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
-.field { display: grid; gap: .5rem; align-content: start; }
-.field.full, .contact-form .btn { grid-column: 1 / -1; }
-.contact-form .btn { justify-self: start; }
-.field label { font-size: .9rem; font-weight: 500; }
-.field label span, .field small { color: var(--muted); font-weight: 400; }
-.field small { font-size: .85rem; }
-.field input, .field select, .field textarea {
-  width: 100%; font: inherit; color: var(--text);
-  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: .7rem .9rem;
-}
-.field input, .field select { height: 3rem; }
-.field textarea { resize: vertical; min-height: 7.5rem; }
-.field :user-invalid { border-color: var(--danger); }
-.hp { position: absolute; left: -9999px; }
-
-.form-msg { display: none; margin-bottom: 1.25rem; padding: 1rem 1.25rem; border: 1px solid; border-radius: var(--radius); color: var(--text); }
-.form-msg:target { display: block; }
-.form-msg.ok { border-color: var(--accent); background: color-mix(in oklab, var(--accent) 10%, var(--bg)); }
-.form-msg.err { border-color: var(--danger); background: color-mix(in oklab, var(--danger) 10%, var(--bg)); }
-#form-sent:target ~ .contact-form { display: none; }
-@media (max-width: 767px) { .contact-form { grid-template-columns: 1fr; } }
-
-/* CTA arrives after the headline has decoded. */
+/* CTAs arrive after the headline has decoded. */
 @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: no-preference) {
   .ctas { animation: rise .8s var(--ease) .9s both; }

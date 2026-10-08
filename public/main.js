@@ -1,15 +1,7 @@
-// Page motion: a drifting field of bits on canvas, the headline decoding from bits to letters,
-// and the contact dialog. Under prefers-reduced-motion the field is drawn once and the headline is shown as is.
+// Page motion: a drifting field of bits on canvas and the headline decoding from bits to letters.
+// Under prefers-reduced-motion the field is drawn once and the headline is shown as is.
 
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-// Contact dialog: every "#contact" link opens it, and so do the anchors /api/contact redirects to.
-const dialog = document.getElementById("contact");
-const openContact = () => { if (!dialog.open) dialog.showModal(); };
-document.querySelectorAll('a[href="#contact"]').forEach((a) =>
-  a.addEventListener("click", (e) => { e.preventDefault(); openContact(); }));
-if (["#contact", "#form-sent", "#form-error"].includes(location.hash)) openContact();
-dialog.addEventListener("close", () => history.replaceState(null, "", location.pathname));
 
 // Headline: wrap each letter, show a random bit over it, resolve left to right.
 const h1 = document.querySelector(".decode");
@@ -81,7 +73,7 @@ function resize() {
   canvas.width = Math.round(width * dpr);
   canvas.height = Math.round(height * dpr);
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  ctx.font = '500 12px "Geist Mono", monospace';
+  ctx.font = '500 12px "JetBrains Mono", monospace';
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
   w = width; h = height;
