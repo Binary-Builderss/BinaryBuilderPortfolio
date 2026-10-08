@@ -17,181 +17,77 @@
   <meta property="og:image" content="https://binarybuilders.dev/assets/geometry-dark.png">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="preload" href="fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
-  <script type="module" src="hero.js"></script>
+  <script type="module" src="main.js"></script>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+  <canvas class="bits" aria-hidden="true"></canvas>
 
-  <header class="nav">
-    <div class="wrap nav-row">
-      <a class="brand" href="#top">
-        <picture>
-          <source srcset="assets/logo-white.png" media="(prefers-color-scheme: dark)">
-          <img src="assets/logo-black.png" alt="BinaryBuilders" width="480" height="109">
-        </picture>
-      </a>
-      <nav aria-label="Primary">
-        <a href="#services">Services</a>
-        <a href="#stack">Stack</a>
-        <a href="#approach">Approach</a>
-      </nav>
-      <a class="btn btn-primary btn-sm" href="#contact">Get in touch</a>
-    </div>
+  <header class="top wrap">
+    <a class="brand" href="/">
+      <picture>
+        <source srcset="assets/logo-white.png" media="(prefers-color-scheme: dark)">
+        <img src="assets/logo-black.png" alt="BinaryBuilders" width="480" height="109">
+      </picture>
+    </a>
   </header>
 
-  <main id="main">
-    <section class="hero" id="top">
-      <canvas class="hero-canvas" aria-hidden="true"></canvas>
-      <div class="wrap hero-inner">
-        <h1 class="decode">Build. Automate. Scale.</h1>
-        <div class="hero-foot">
-          <p class="lede">A two-engineer studio building Java backends, React and Next.js apps, Salesforce automation, and the integrations between them.</p>
-          <div class="ctas">
-            <a class="btn btn-primary" href="#contact">Get in touch</a>
-            <a class="btn btn-ghost" href="#services">See services</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="services wrap" id="services">
-      <h2>What we build</h2>
-      <div class="bento">
-        <article class="cell c-wide tint">
-          <h3>Custom software development</h3>
-          <p>Applications and features built to your requirements, from focused improvements to larger components.</p>
-        </article>
-        <article class="cell c-tall grid-bg">
-          <h3>Backend and API integrations</h3>
-          <p>Reliable services that connect your applications, external APIs, databases and enterprise systems.</p>
-        </article>
-        <article class="cell">
-          <h3>Salesforce development</h3>
-          <p>Custom logic, automated workflows, external integrations, and upkeep of existing orgs.</p>
-        </article>
-        <article class="cell accent">
-          <h3>Maintenance and problem solving</h3>
-          <p>We troubleshoot, refactor, optimize and extend software you already run.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="stack wrap" id="stack">
-      <h2>The tools we work with every day</h2>
-      <div class="stack-grid">
-        <div>
-          <h3>Backend</h3>
-          <ul class="chips">
-            <li>Java</li><li>Go</li><li>C#</li><li>C++</li><li>Spring Boot</li><li>REST API design</li><li>Microservices</li><li>Database integration</li><li>Third-party services</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Frontend</h3>
-          <ul class="chips">
-            <li>React</li><li>Next.js</li><li>TypeScript</li><li>JavaScript</li><li>Dashboards</li><li>Internal tools</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Salesforce</h3>
-          <ul class="chips">
-            <li>Apex</li><li>Triggers</li><li>Flow</li><li>Lightning Web Components</li><li>REST API</li><li>Debugging and performance</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Integration and automation</h3>
-          <ul class="chips">
-            <li>Enterprise system integration</li><li>Process automation</li><li>Custom workflows</li><li>Architecture improvements</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="who wrap">
-      <h2>Who we work with</h2>
-      <dl class="who-list">
-        <div><dt>Startups</dt><dd>MVPs, custom features, and technical support when you need it.</dd></div>
-        <div><dt>Small and medium businesses</dt><dd>Integrations and automation for the processes you repeat every day.</dd></div>
-        <div><dt>Digital agencies</dt><dd>Dependable external development for your client work.</dd></div>
-        <div><dt>Salesforce consultancies</dt><dd>Specialized Apex, LWC and integration capacity.</dd></div>
-        <div><dt>Development teams</dt><dd>Extra engineering hands for a defined piece of a project.</dd></div>
-      </dl>
-    </section>
-
-    <section class="approach wrap" id="approach">
-      <h2>How we work</h2>
-      <ol class="steps">
-        <li><h3>Understand</h3><p>We learn the problem before proposing a solution.</p></li>
-        <li><h3>Scope</h3><p>Realistic requirements and clear deliverables, agreed up front.</p></li>
-        <li><h3>Build</h3><p>Clean, testable code. We reuse what already works instead of rebuilding it.</p></li>
-        <li><h3>Support</h3><p>Ongoing maintenance for new and existing codebases.</p></li>
-      </ol>
-    </section>
-
-    <section class="statement">
-      <div class="wrap statement-row">
-        <p>Two engineers. Direct communication, technical ownership, no layers in between.</p>
-        <picture>
-          <source srcset="assets/geometry-dark.png" media="(prefers-color-scheme: dark)">
-          <img src="assets/geometry-light.png" alt="BinaryBuilders monogram on its construction grid, with the tagline Build, Automate, Scale" width="1200" height="788" loading="lazy">
-        </picture>
-      </div>
-    </section>
-
-    <section class="contact wrap" id="contact">
-      <div class="contact-intro">
-        <h2>Have a scoped project, an integration, or a codebase that needs care?</h2>
-        <p>Tell us what you are working on and what done looks like. We will tell you honestly whether we are the right fit.</p>
-        <!-- TODO: confirm the public contact address before launch -->
-        <p class="mail">Prefer email? <a href="mailto:hello@binarybuilders.dev">hello@binarybuilders.dev</a></p>
-      </div>
-      <div>
-        <!-- /api/contact redirects back to one of these anchors; :target shows it. -->
-        <p class="form-msg ok" id="form-sent" role="status">Thanks, your request is on its way. We will reply by email.</p>
-        <p class="form-msg err" id="form-error" role="alert">Your request could not be sent. Check the fields and try again, or email us directly.</p>
-        <form class="contact-form" method="post" action="/api/contact">
-          <div class="field">
-            <label for="f-name">Name</label>
-            <input id="f-name" name="name" required maxlength="100" autocomplete="name">
-          </div>
-          <div class="field">
-            <label for="f-email">Email</label>
-            <input id="f-email" name="email" type="email" required maxlength="200" autocomplete="email">
-          </div>
-          <div class="field">
-            <label for="f-company">Company <span>(optional)</span></label>
-            <input id="f-company" name="company" maxlength="120" autocomplete="organization">
-          </div>
-          <div class="field">
-            <label for="f-service">What do you need?</label>
-            <select id="f-service" name="service" required>
-              <option value="" disabled selected>Choose a service</option>
-              <option>Custom software</option>
-              <option>Backend and API integration</option>
-              <option>Salesforce</option>
-              <option>Maintenance</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="field full">
-            <label for="f-message">Project details</label>
-            <textarea id="f-message" name="message" rows="6" required minlength="10" maxlength="5000" aria-describedby="f-message-help"></textarea>
-            <small id="f-message-help">Scope, timeline, and the systems involved.</small>
-          </div>
-          <div class="hp" aria-hidden="true">
-            <label for="f-website">Website</label>
-            <input id="f-website" name="website" tabindex="-1" autocomplete="off">
-          </div>
-          <button class="btn btn-primary btn-lg" type="submit">Send request</button>
-        </form>
-      </div>
-    </section>
+  <main class="hero wrap">
+    <h1 class="decode">Build. Automate. Scale.</h1>
+    <div class="ctas">
+      <a class="btn btn-primary btn-lg" href="#contact">Get in touch</a>
+    </div>
   </main>
 
   <footer class="footer wrap">
-    <span>&copy; 2026 BinaryBuilders</span>
-    <span>binarybuilders.dev</span>
+    <p>Software engineering studio<br>Java, Go, C#, C++, React, Next.js, Salesforce</p>
+    <!-- TODO: confirm the public contact address before launch -->
+    <p><a href="mailto:hello@binarybuilders.dev">hello@binarybuilders.dev</a><br>&copy; 2026 BinaryBuilders</p>
   </footer>
+
+  <!-- Opened by main.js; dialog:target keeps it reachable without JS. /api/contact redirects back to #form-sent or #form-error. -->
+  <dialog id="contact" class="contact" closedby="any" aria-labelledby="contact-title">
+    <div class="contact-head">
+      <h2 id="contact-title">Tell us about your project</h2>
+      <form method="dialog"><button class="btn btn-ghost btn-sm">Close</button></form>
+    </div>
+    <p class="form-msg ok" id="form-sent" role="status">Thanks, your request is on its way. We will reply by email.</p>
+    <p class="form-msg err" id="form-error" role="alert">Your request could not be sent. Check the fields and try again, or email us directly.</p>
+    <form class="contact-form" method="post" action="/api/contact">
+      <div class="field">
+        <label for="f-name">Name</label>
+        <input id="f-name" name="name" autofocus required maxlength="100" autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="f-email">Email</label>
+        <input id="f-email" name="email" type="email" required maxlength="200" autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="f-company">Company <span>(optional)</span></label>
+        <input id="f-company" name="company" maxlength="120" autocomplete="organization">
+      </div>
+      <div class="field">
+        <label for="f-service">What do you need?</label>
+        <select id="f-service" name="service" required>
+          <option value="" disabled selected>Choose a service</option>
+          <option>Custom software</option>
+          <option>Backend and API integration</option>
+          <option>Salesforce</option>
+          <option>Maintenance</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field full">
+        <label for="f-message">Project details</label>
+        <textarea id="f-message" name="message" rows="5" required minlength="10" maxlength="5000" aria-describedby="f-message-help"></textarea>
+        <small id="f-message-help">Scope, timeline, and the systems involved.</small>
+      </div>
+      <div class="hp" aria-hidden="true">
+        <label for="f-website">Website</label>
+        <input id="f-website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <button class="btn btn-primary" type="submit">Send request</button>
+    </form>
+  </dialog>
 </body>
 </html>
