@@ -3,18 +3,74 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BinaryBuilders | Software engineering studio</title>
-  <meta name="description" content="BinaryBuilders is a two-engineer studio building Java backends, React and Next.js apps, Salesforce automation, and the integrations between them.">
+  <title>BinaryBuilders | Java, Salesforce and API Development</title>
+  <meta name="description" content="BinaryBuilders is an independent software engineering team: Java and Spring Boot backends, Salesforce development, React and Next.js apps, and the integrations between them.">
   <meta name="color-scheme" content="light dark">
   <link rel="canonical" href="https://binarybuilders.dev/">
   <script type="application/ld+json">
-    {"@context": "https://schema.org", "@type": "Organization", "name": "BinaryBuilders", "url": "https://binarybuilders.dev", "logo": "https://binarybuilders.dev/assets/apple-touch-icon.png"}
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://binarybuilders.dev/#org",
+      "name": "BinaryBuilders",
+      "alternateName": "Binary Builders",
+      "url": "https://binarybuilders.dev/",
+      "logo": "https://binarybuilders.dev/assets/apple-touch-icon.png",
+      "email": "contactus@binarybuilders.dev",
+      "description": "Independent software engineering team building Java and Spring Boot backends, Salesforce solutions, React and Next.js applications, and system integrations.",
+      "founder": [
+        {
+          "@type": "Person",
+          "name": "Giuseppe Scappaticci"
+        },
+        {
+          "@type": "Person",
+          "name": "Michele Sabatino"
+        }
+      ],
+      "knowsAbout": [
+        "Java",
+        "Spring Boot",
+        "REST API design",
+        "Microservices",
+        "Go",
+        "C#",
+        "C++",
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Salesforce",
+        "Apex",
+        "Salesforce Flow",
+        "Lightning Web Components",
+        "System integration",
+        "Business process automation"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://binarybuilders.dev/#website",
+      "name": "BinaryBuilders",
+      "alternateName": "Binary Builders",
+      "url": "https://binarybuilders.dev/",
+      "publisher": {
+        "@id": "https://binarybuilders.dev/#org"
+      }
+    }
+  ]
+}
   </script>
-  <meta property="og:title" content="BinaryBuilders">
-  <meta property="og:description" content="Backend, web, Salesforce and integration work from a focused two-engineer team.">
-  <meta property="og:url" content="https://binarybuilders.dev">
+  <meta property="og:site_name" content="BinaryBuilders">
+  <meta property="og:title" content="BinaryBuilders | Java, Salesforce and API Development">
+  <meta property="og:description" content="Backend, web, Salesforce and integration work from an independent two-engineer team.">
+  <meta property="og:url" content="https://binarybuilders.dev/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://binarybuilders.dev/assets/geometry-dark.png">
+  <meta property="og:image" content="https://binarybuilders.dev/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preload" href="fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>
@@ -44,7 +100,10 @@
   </main>
 
   <footer class="footer wrap">
-    <p>Software engineering studio<br>Java, Go, C#, C++, React, Next.js, Salesforce</p>
+    <nav aria-label="Services">
+      <p>Software engineering studio</p>
+      <p class="links"><a href="/services/salesforce-development">Salesforce</a> <a href="/services/backend-api-integration">Java and APIs</a> <a href="/services/custom-software">Web apps</a> <a href="/services/software-maintenance">Maintenance</a></p>
+    </nav>
     <p>binarybuilders.dev<br>&copy; 2026 BinaryBuilders</p>
   </footer>
 

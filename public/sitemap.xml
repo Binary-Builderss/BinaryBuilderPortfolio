@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://binarybuilders.dev/</loc>
-    <lastmod>2026-10-08</lastmod>
-  </url>
+  <url><loc>https://binarybuilders.dev/</loc><lastmod>2026-10-08</lastmod></url>
+  <url><loc>https://binarybuilders.dev/services/salesforce-development</loc><lastmod>2026-10-08</lastmod></url>
+  <url><loc>https://binarybuilders.dev/services/backend-api-integration</loc><lastmod>2026-10-08</lastmod></url>
+  <url><loc>https://binarybuilders.dev/services/custom-software</loc><lastmod>2026-10-08</lastmod></url>
+  <url><loc>https://binarybuilders.dev/services/software-maintenance</loc><lastmod>2026-10-08</lastmod></url>
 </urlset>

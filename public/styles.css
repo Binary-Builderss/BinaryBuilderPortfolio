@@ -107,8 +107,24 @@ p { color: var(--muted); }
   display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: .75rem 2rem;
   padding-block: 1.25rem; font-size: .8rem; line-height: 1.5;
 }
-.footer p:last-child { text-align: right; }
-@media (max-width: 767px) { .footer p:last-child { text-align: left; } }
+.footer > p:last-child { text-align: right; }
+@media (max-width: 767px) { .footer > p:last-child { text-align: left; } }
+.footer .links { display: flex; flex-wrap: wrap; gap: 0 1.5ch; }
+.footer a { color: var(--text); }
+
+/* Content pages (services): readable column, same type and tokens. */
+.doc { width: min(100% - 2rem, 72ch); margin-inline: auto; padding-block: clamp(2rem, 6vh, 4rem) 4rem; }
+.doc .crumb { font-size: .8rem; margin-bottom: 1.5rem; }
+.doc h1 { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; }
+.doc .lede { color: var(--text); font-size: 1.05rem; margin-top: 1.25rem; }
+.doc h2 { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; margin-top: 2.75rem; }
+.doc p, .doc ul { margin-top: .9rem; }
+.doc ul { padding-left: 1.2rem; color: var(--muted); }
+.doc li + li { margin-top: .35rem; }
+.doc li strong { color: var(--text); font-weight: 600; }
+.doc .contact { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+.doc .contact h2 { margin-top: 0; }
+.doc .ctas { animation: none; }
 
 /* Call dialog */
 .call {
