@@ -1,0 +1,8 @@
+{
+  "name": "binarybuilderportfolio",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-01",
+  "assets": { "directory": "./public", "binding": "ASSETS" },
+  // Recipient comes from the CONTACT_TO secret (a verified Email Routing destination).
+  "send_email": [{ "name": "MAILER" }]
+}
