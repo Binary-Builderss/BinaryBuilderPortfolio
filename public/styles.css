@@ -66,7 +66,6 @@ p { color: var(--muted); }
 .btn-ghost:hover { border-color: var(--muted); }
 .btn-sm { padding: .45rem .9rem; font-size: .9rem; }
 .btn-lg { padding: 1rem 1.75rem; font-size: 1.05rem; }
-.btn .who { color: var(--muted); margin-right: .75ch; }
 
 .top { display: flex; align-items: center; height: 72px; }
 .brand img { display: block; height: 32px; width: auto; }
