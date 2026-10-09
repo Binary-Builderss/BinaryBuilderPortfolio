@@ -6,6 +6,7 @@ Each language also gets a 404.html, which Cloudflare serves for unknown paths.
 """
 import json
 import math
+import re
 import pathlib
 import random
 
@@ -495,10 +496,10 @@ def footer(lang):
   </footer>"""
 
 
-def services_list(lang, skip=None):
+def services_list(lang, skip=None, cls="more-list"):
     items = "\n".join(f'          <li><a href="{UI[lang]["services"]}{s[lang]["slug"]}">{s[lang]["h1"]}</a></li>'
                       for s in SERVICES if s is not skip)
-    return f'<ul class="more-list">\n{items}\n        </ul>'
+    return f'<ul class="{cls}">\n{items}\n        </ul>'
 
 
 def field(x, y, t=0.9):
@@ -539,15 +540,15 @@ def home(lang):
 """
 
 
-def doc_page(lang, head_html, switch_href, content):
-    """Shared shell of the reading pages: services, privacy, 404."""
+def doc_page(lang, head_html, switch_href, content, main_class="doc"):
+    """Shared shell of the reading pages: services, about, founders, privacy, 404."""
     return f"""{head_html}
 </head>
 <body>
 {band()}
 {header(lang, switch_href)}
 
-  <main class="doc wrap">
+  <main class="{main_class} wrap">
     <article>
 {content}
     </article>
@@ -557,6 +558,15 @@ def doc_page(lang, head_html, switch_href, content):
 </body>
 </html>
 """
+
+
+def as_blocks(body):
+    """Service page layout (Superdesign "scannable blocks"): each bullet becomes a bordered tile,
+    and the two closing sections (who it's for, how we work) sit side by side."""
+    body = re.sub(r"<li><strong>(.*?)</strong>[,:]? ", r"<li><strong>\1</strong> ", body)
+    body = body.replace("<ul>", '<ul class="blocks">')
+    return re.sub(r"(<h2>[^<]*</h2>\s*<p>.*?</p>)\s*(<h2>[^<]*</h2>\s*<p>.*?</p>)\s*$",
+                  r'<div class="pair">\n      <section>\1</section>\n      <section>\2</section>\n      </div>', body, flags=re.S)
 
 
 def service(lang, s):
@@ -577,10 +587,10 @@ def service(lang, s):
     content = f"""      <p class="crumb"><a href="{ui["home"]}">BinaryBuilders</a> / {ui["nav"]}</p>
       <h1>{p["h1"]}</h1>
       <p class="lede">{p["lede"]}</p>
-{p["body"]}
+{as_blocks(p["body"])}
       <nav class="more" aria-labelledby="more-title">
         <h2 id="more-title">{ui["more"]}</h2>
-        {services_list(lang, s)}
+        {services_list(lang, s, "more-list cards")}
       </nav>
       <section class="contact" aria-labelledby="contact-title">
         <h2 id="contact-title">{ui["contact_h"]}</h2>
@@ -588,7 +598,7 @@ def service(lang, s):
         {ctas(lang)}
       </section>"""
     return doc_page(lang, head(lang, p["title"], p["desc"], path, [JB, MARTIAN], None, alternates, ld),
-                    alternates[ui["other"]], content)
+                    alternates[ui["other"]], content, "doc svc")
 
 
 def privacy(lang):

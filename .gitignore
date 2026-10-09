@@ -4,3 +4,4 @@ BinaryBuilders_Clean_Assets_v2/
 node_modules/
 .wrangler/
 COMPANY_CONTEXT.md
+.superdesign/
