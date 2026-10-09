@@ -1,4 +1,4 @@
-// Page motion: a drifting field of bits on canvas, headlines decoding from bits to letters, a terminal caret cursor.
+// Page motion: a drifting field of bits on canvas and headlines decoding from bits to letters.
 // Home: full-screen field, headline replays every 30s. Content pages: a band of field behind the header, title decodes once.
 // Under prefers-reduced-motion the field is drawn once and nothing else moves.
 
@@ -29,26 +29,6 @@ function decode() {
   }, step);
 }
 if (!reduce) { decode(); if (home) setInterval(decode, 30000); }
-
-// Caret cursor: a block that follows the mouse and blinks when it rests, like a terminal.
-// Only for a real mouse; over links and buttons it hides and the native hand takes over.
-if (!reduce && matchMedia("(pointer: fine)").matches) {
-  const caret = document.createElement("div");
-  caret.className = "caret over"; // hidden until the mouse first moves
-  caret.setAttribute("aria-hidden", "true");
-  document.body.append(caret);
-  document.documentElement.classList.add("has-caret");
-  let rest;
-  addEventListener("pointermove", (e) => {
-    if (e.pointerType !== "mouse") return;
-    caret.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-    caret.classList.toggle("over", !!e.target.closest?.("a, button"));
-    caret.classList.remove("rest");
-    clearTimeout(rest);
-    rest = setTimeout(() => caret.classList.add("rest"), 600);
-  }, { passive: true });
-  document.documentElement.addEventListener("pointerleave", () => caret.classList.add("over"));
-}
 
 // Bit field
 const canvas = document.querySelector(".bits");
