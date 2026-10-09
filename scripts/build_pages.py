@@ -294,8 +294,8 @@ def header(lang, switch_href):
 
 def ctas(lang, cls="btn-lg"):
     return f"""<div class="ctas">
-      <a class="btn btn-primary {cls}" href="mailto:{EMAIL}">{EMAIL}</a>
-      <a class="btn btn-ghost {cls}" href="{BOOKING}" target="_blank" rel="noopener">{UI[lang]["book"]}</a>
+      <a class="btn btn-primary {cls}" href="{BOOKING}" target="_blank" rel="noopener">{UI[lang]["book"]}</a>
+      <a class="btn btn-ghost {cls}" href="mailto:{EMAIL}">{EMAIL}</a>
     </div>"""
 
 

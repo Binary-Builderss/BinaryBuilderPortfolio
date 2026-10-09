@@ -31,9 +31,9 @@ const ctx = canvas.getContext("2d");
 const CELL = 18;      // px between bits
 let radius = 140;     // px of highlight, smaller on narrow screens
 let cols = 0, rows = 0, w = 0, h = 0, bits, colors, last = 0;
+// Two highlights: one always wandering on its own (so touch screens get one too), one following the mouse.
 const pointer = { x: -1e4, y: -1e4 };
-// No hover on touch screens: the highlight wanders on its own instead. A real mouse takes over.
-let wander = matchMedia("(hover: none)").matches;
+const wander = { x: -1e4, y: -1e4 };
 
 function readColors() {
   const s = getComputedStyle(document.documentElement);
@@ -45,24 +45,22 @@ const field = (x, y, t) =>
   (Math.sin(x * 0.11 + t) + Math.sin(y * 0.17 - t * 0.8) + Math.sin((x + y) * 0.07 + t * 0.5)) / 3;
 
 function draw(time) {
-  const t = time / 2400;
-  if (wander) {
-    // Lissajous path: smooth, never repeats quickly, stays inside the screen.
-    pointer.x = w * (0.5 + 0.4 * Math.sin(t * 1.3));
-    pointer.y = h * (0.5 + 0.4 * Math.sin(t * 0.9 + 1));
-  }
+  const t = time / 1000;
+  // Lissajous path: smooth, never repeats quickly, stays inside the screen.
+  wander.x = w * (0.5 + 0.4 * Math.sin(t * 1.35));
+  wander.y = h * (0.5 + 0.4 * Math.sin(t * 0.95 + 1));
   ctx.clearRect(0, 0, w, h);
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
       const v = field(c, r, t);
       const x = c * CELL + CELL / 2, y = r * CELL + CELL / 2;
-      const d = Math.hypot(x - pointer.x, y - pointer.y);
+      const d = Math.min(Math.hypot(x - wander.x, y - wander.y), Math.hypot(x - pointer.x, y - pointer.y));
       const near = d < radius;
       // Ambient bits fade out toward the footer; the highlight shows everywhere.
       const fade = Math.min(1, Math.max(0, (0.85 * h - y) / (0.55 * h)));
       if (!near && (v < 0.2 || fade === 0)) continue;
       const i = r * cols + c;
-      if (Math.random() < (near ? 0.08 : 0.003)) bits[i] ^= 1;
+      if (Math.random() < (near ? 0.15 : 0.006)) bits[i] ^= 1;
       ctx.globalAlpha = near ? 0.9 - (d / radius) * 0.6 : (v - 0.2) * 0.45 * fade;
       ctx.fillStyle = near ? colors.accent : colors.ink;
       ctx.fillText(bits[i] ? "1" : "0", x, y);
@@ -88,13 +86,12 @@ function resize() {
 }
 
 function loop(now) {
-  if (now - last > 40) { last = now; draw(now); } // ~25fps is plenty for a slow drift; rAF pauses in hidden tabs
+  if (now - last > 33) { last = now; draw(now); } // ~30fps is plenty for a drift; rAF pauses in hidden tabs
   requestAnimationFrame(loop);
 }
 
 addEventListener("pointermove", (e) => {
   if (e.pointerType !== "mouse") return;
-  wander = false;
   pointer.x = e.clientX;
   pointer.y = e.clientY;
 }, { passive: true });
