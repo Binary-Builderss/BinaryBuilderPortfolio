@@ -354,13 +354,13 @@ PEOPLE = [
         "en": {
             "title": "Giuseppe Scappaticci | Software engineer, BinaryBuilders",
             "desc": "Giuseppe Scappaticci, co-founder of BinaryBuilders. Software engineer since 2021, previously a Salesforce and backend consultant at Accenture.",
-            "lede": "I co-founded BinaryBuilders with Michele Sabatino, and I've been working as a software engineer since 2021.",
+            "lede": "I co-founded BinaryBuilders with Michele Sabatino.",
             "background": "Before BinaryBuilders I was a consultant at Accenture, building Salesforce solutions and backend services for enterprise projects. That experience with CRM processes, and the systems connected to them, is what I bring to BinaryBuilders.",
         },
         "it": {
             "title": "Giuseppe Scappaticci | Software engineer, BinaryBuilders",
             "desc": "Giuseppe Scappaticci ha fondato BinaryBuilders con Michele Sabatino. Nel software dal 2021, prima come consulente Salesforce e backend in Accenture.",
-            "lede": "Ho fondato BinaryBuilders con Michele Sabatino. Lavoro nello sviluppo software dal 2021.",
+            "lede": "Ho fondato BinaryBuilders con Michele Sabatino.",
             "background": "Ho lavorato in Accenture come consulente, sviluppando soluzioni Salesforce e servizi backend per progetti enterprise. In BinaryBuilders porto questa esperienza: i processi CRM e tutti i sistemi che ci girano intorno.",
         },
     },
@@ -370,13 +370,13 @@ PEOPLE = [
         "en": {
             "title": "Michele Sabatino | Software engineer, BinaryBuilders",
             "desc": "Michele Sabatino, co-founder of BinaryBuilders. Working in software since 2021, from cybersecurity to Java development for companies in Campania.",
-            "lede": "I co-founded BinaryBuilders with Giuseppe Scappaticci, and I've been working in software since 2021.",
+            "lede": "I co-founded BinaryBuilders with Giuseppe Scappaticci.",
             "background": "I started my career in cybersecurity, then switched to Java development, working for two companies in Campania, the region around Naples.",
         },
         "it": {
             "title": "Michele Sabatino | Software engineer, BinaryBuilders",
             "desc": "Michele Sabatino ha fondato BinaryBuilders con Giuseppe Scappaticci. Nel software dal 2021: prima la cybersecurity, poi lo sviluppo Java per aziende campane.",
-            "lede": "Ho fondato BinaryBuilders con Giuseppe Scappaticci. Lavoro nel software dal 2021.",
+            "lede": "Ho fondato BinaryBuilders con Giuseppe Scappaticci.",
             "background": "Ho iniziato nella cybersecurity, poi ho cambiato strada e ho cominciato a sviluppare in Java, lavorando per due aziende campane.",
         },
     },
@@ -384,11 +384,11 @@ PEOPLE = [
 
 PEOPLE_UI = {
     "en": {"background": "Background", "work": "At BinaryBuilders", "work_p": "{other} and I both work across every service we offer:",
-           "langs": "Languages and location", "langs_p": "Italian (native) and English (C1). I'm from Naples, Italy.",
-           "links": "Profiles", "team": "The team"},
+           "since": "In software since", "langs": "Languages", "langs_v": "Italian (native), English (C1)",
+           "city": "Based in", "city_v": "Naples, Italy"},
     "it": {"background": "Percorso", "work": "In BinaryBuilders", "work_p": "Con {other} ci occupiamo di tutti i servizi dello studio:",
-           "langs": "Lingue e città", "langs_p": "Italiano madrelingua e inglese a livello C1. Sono di Napoli.",
-           "links": "Profili", "team": "Il team"},
+           "since": "Nel software dal", "langs": "Lingue", "langs_v": "Italiano madrelingua, inglese C1",
+           "city": "Città", "city_v": "Napoli"},
 }
 
 
@@ -635,24 +635,24 @@ def person(lang, p):
     content = f"""      <p class="crumb"><a href="{ui["home"]}">BinaryBuilders</a> / <a href="{ui["about"]}">{ui["about_label"]}</a></p>
       <h1 class="decode">{p["name"]}</h1>
       <p class="lede">{t["lede"]}</p>
+      <dl class="facts">
+        <div><dt>{pu["since"]}</dt><dd>2021</dd></div>
+        <div><dt>{pu["langs"]}</dt><dd>{pu["langs_v"]}</dd></div>
+        <div><dt>{pu["city"]}</dt><dd>{pu["city_v"]}</dd></div>
+        <div><dt>GitHub</dt><dd><a href="{p["github"]}" rel="me">{p["github"].rsplit("/", 1)[1]}</a></dd></div>
+      </dl>
       <h2>{pu["background"]}</h2>
       <p>{t["background"]}</p>
       <h2>{pu["work"]}</h2>
       <p>{pu["work_p"].format(other=other)}</p>
-      {services_list(lang)}
-      <h2>{pu["langs"]}</h2>
-      <p>{pu["langs_p"]}</p>
-      <h2>{pu["links"]}</h2>
-      <ul class="more-list">
-          <li><a href="{p["github"]}" rel="me">GitHub</a></li>
-        </ul>
+      {services_list(lang, cls="more-list cards")}
       <section class="contact" aria-labelledby="contact-title">
         <h2 id="contact-title">{ui["contact_h"]}</h2>
         <p>{ui["contact_p"]}</p>
         {ctas(lang)}
       </section>"""
     return doc_page(lang, head(lang, t["title"], t["desc"], path, [JB, MARTIAN], None, alternates, ld),
-                    alternates[ui["other"]], content)
+                    alternates[ui["other"]], content, "doc svc")
 
 
 def not_found(lang):

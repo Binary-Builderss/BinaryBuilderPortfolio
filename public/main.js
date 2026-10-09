@@ -30,6 +30,20 @@ function decode() {
 }
 if (!reduce) { decode(); if (home) setInterval(decode, 30000); }
 
+// Content pages: what starts below the screen rises in once when it arrives.
+// Anything visible at load is left alone, so nothing on screen ever sits half faded.
+if (!reduce && !home) {
+  const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+  }), { rootMargin: "0px 0px -8% 0px" });
+  for (const el of document.querySelectorAll(".doc article > :is(h2, h3, p, ul:not(.blocks, .cards), section, div, dl), .doc .blocks li, .doc .cards li")) {
+    if (el.getBoundingClientRect().top < innerHeight) continue;
+    if (el.matches("li")) el.style.transitionDelay = ([...el.parentNode.children].indexOf(el) % 4) * 60 + "ms"; // tiles cascade
+    el.classList.add("reveal");
+    io.observe(el);
+  }
+}
+
 // Bit field
 const canvas = document.querySelector(".bits");
 const ctx = canvas.getContext("2d");
