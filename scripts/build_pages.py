@@ -32,16 +32,16 @@ UI = {
     },
     "it": {
         "home": "/it/", "services": "/it/servizi/", "locale": "it_IT", "other": "en", "switch": "English",
-        "home_title": "BinaryBuilders | Sviluppo Java, Salesforce e API",
-        "home_desc": "BinaryBuilders è un team indipendente di ingegneria del software: backend Java e Spring Boot, sviluppo Salesforce, app React e Next.js e integrazioni tra sistemi.",
-        "home_og": "Backend, web, Salesforce e integrazioni da un team indipendente di due ingegneri.",
-        "studio": "Studio di ingegneria del software", "nav": "Servizi", "book": "Prenota una call",
+        "home_title": "BinaryBuilders | Sviluppo software Java, Salesforce e API",
+        "home_desc": "Siamo un piccolo studio indipendente di sviluppo software: backend Java e Spring Boot, Salesforce, applicazioni React e Next.js e integrazioni tra sistemi.",
+        "home_og": "Backend, web, Salesforce e integrazioni: uno studio indipendente di sviluppo software.",
+        "studio": "Studio di sviluppo software", "nav": "Servizi", "book": "Prenota una call",
         "links": ["Salesforce", "Java e API", "Web app", "Manutenzione"],
-        "contact_h": "Raccontateci il vostro progetto",
-        "contact_p": "Inviateci il perimetro e i sistemi coinvolti. Vi diremo onestamente se siamo le persone giuste.",
+        "contact_h": "Parlaci del tuo progetto",
+        "contact_p": "Scrivici cosa ti serve e quali sistemi sono coinvolti. Ti diremo con franchezza se siamo le persone giuste.",
         "more": "Altri servizi", "privacy": "/it/privacy", "about": "/it/chi-siamo", "about_label": "Chi siamo",
         "nf_title": "Pagina non trovata | BinaryBuilders", "nf_h1": "Pagina non trovata",
-        "nf_p": "Questo indirizzo non esiste, oppure la pagina è stata spostata. Qui sotto trovate tutto quello che facciamo.",
+        "nf_p": "Questa pagina non esiste o è stata spostata. Qui sotto trovi tutti i nostri servizi.",
         "nf_home": "Torna alla home",
     },
 }
@@ -72,24 +72,24 @@ PRIVACY = {
     },
     "it": {
         "title": "Privacy | BinaryBuilders",
-        "desc": "Come binarybuilders.dev tratta i dati personali: nessuna statistica e nessun cookie di tracciamento, solo email e prenotazioni di call.",
-        "h1": "Informativa privacy",
-        "lede": "Questo sito non usa statistiche, pubblicità o cookie di tracciamento. Questa pagina spiega i pochi dati personali coinvolti quando lo visitate, ci scrivete o prenotate una call.",
+        "desc": "Come binarybuilders.dev tratta i dati personali: niente statistiche, niente cookie di tracciamento, solo email e prenotazioni delle call.",
+        "h1": "Informativa sulla privacy",
+        "lede": "Questo sito non usa statistiche, pubblicità né cookie di tracciamento. Qui spieghiamo quali dati personali entrano in gioco quando visiti il sito, ci scrivi o prenoti una call.",
         "body": f"""
       <h2>Chi è il titolare</h2>
-      <p>Il titolare del trattamento è BinaryBuilders, il team di ingegneria del software di Giuseppe Scappaticci e Michele Sabatino. Potete contattarci a <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
+      <p>Il titolare del trattamento è BinaryBuilders, lo studio di sviluppo software di Giuseppe Scappaticci e Michele Sabatino. Puoi contattarci a <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
       <h2>Navigazione</h2>
-      <p>Il sito è ospitato su Cloudflare. Per servire le pagine e proteggere il sito dagli abusi, Cloudflare tratta dati tecnici come l'indirizzo IP, il tipo di browser e le pagine richieste. Non usiamo questi dati per identificarvi. I font e tutti gli altri file sono serviti dal nostro dominio, quindi navigando non viene caricato nulla da terze parti.</p>
+      <p>Il sito è ospitato su Cloudflare. Per mostrare le pagine e proteggere il sito da abusi, Cloudflare tratta alcuni dati tecnici, come indirizzo IP, tipo di browser e pagine richieste. Non li usiamo per identificarti. Font e file sono tutti sul nostro dominio: mentre navighi non viene caricato nulla da siti di terze parti.</p>
       <h2>Cookie</h2>
-      <p>Il sito imposta un solo cookie tecnico, <code>lang</code>, e solo se cambiate lingua. Ricorda la scelta per un anno e non contiene altro. Non richiede consenso e non vengono impostati altri cookie.</p>
-      <h2>Se ci scrivete</h2>
-      <p>I messaggi inviati a {EMAIL} vengono inoltrati da Cloudflare Email Routing alla nostra casella. Usiamo il vostro indirizzo e il messaggio solo per rispondere e, se lavoriamo insieme, per gestire il progetto. Conserviamo la corrispondenza per il tempo necessario a questo scopo o per quello richiesto dalla legge.</p>
-      <h2>Prenotazione di una call</h2>
-      <p>Il pulsante "Prenota una call" apre una pagina di prenotazione gestita da Google Calendar. Il nome, l'email e le note che inserite sono trattati da Google e condivisi con noi per fissare la call e inviarvi il link della videochiamata. Per quella pagina vale l'<a href="https://policies.google.com/privacy?hl=it">informativa privacy di Google</a>.</p>
+      <p>Il sito usa un solo cookie tecnico, <code>lang</code>, e solo se cambi lingua: ricorda la tua scelta per un anno e non contiene altro. Non richiede consenso e non ci sono altri cookie.</p>
+      <h2>Se ci scrivi</h2>
+      <p>Le email inviate a {EMAIL} arrivano nella nostra casella tramite Cloudflare Email Routing. Usiamo il tuo indirizzo e il messaggio solo per risponderti e, se lavoriamo insieme, per gestire il progetto. Conserviamo la corrispondenza per il tempo necessario a questi scopi o per quello previsto dalla legge.</p>
+      <h2>Se prenoti una call</h2>
+      <p>Il pulsante «Prenota una call» apre una pagina di prenotazione di Google Calendar. Nome, email ed eventuali note che inserisci vengono trattati da Google e condivisi con noi per fissare la call e mandarti il link della videochiamata. Per quella pagina vale l'<a href="https://policies.google.com/privacy?hl=it">informativa privacy di Google</a>.</p>
       <h2>Base giuridica e trasferimenti</h2>
-      <p>Trattiamo questi dati per rispondere a richieste che avviate voi (art. 6, par. 1, lett. b GDPR) e per il nostro legittimo interesse a gestire un sito sicuro (art. 6, par. 1, lett. f GDPR). Cloudflare e Google hanno sede negli Stati Uniti e trasferiscono i dati nell'ambito dell'EU-U.S. Data Privacy Framework.</p>
-      <h2>I vostri diritti</h2>
-      <p>Potete chiederci l'accesso, la rettifica o la cancellazione dei vostri dati, la limitazione o l'opposizione al trattamento, o di riceverli in un formato portabile, scrivendo a {EMAIL}. Potete anche presentare reclamo al Garante per la protezione dei dati personali.</p>
+      <p>Trattiamo questi dati per rispondere alle richieste che ci invii (art. 6, par. 1, lett. b del GDPR) e per il nostro legittimo interesse a mantenere il sito sicuro (art. 6, par. 1, lett. f). Cloudflare e Google hanno sede negli Stati Uniti e trasferiscono i dati in base all'EU-U.S. Data Privacy Framework.</p>
+      <h2>I tuoi diritti</h2>
+      <p>Puoi chiederci in qualsiasi momento di vedere i tuoi dati, correggerli o cancellarli, di limitarne o contestarne il trattamento, o di riceverli in un formato portabile: basta scrivere a {EMAIL}. Puoi anche presentare reclamo al Garante per la protezione dei dati personali.</p>
       <p class="updated">Ultimo aggiornamento: 9 ottobre 2026.</p>""",
     },
 }
@@ -120,23 +120,23 @@ SERVICES = [
         "it": {
             "slug": "sviluppo-salesforce",
             "title": "Sviluppo Salesforce: Apex, Flow e LWC | BinaryBuilders",
-            "desc": "Classi e trigger Apex, Salesforce Flow, Lightning Web Components e integrazioni REST, sviluppati e mantenuti da un team indipendente di due ingegneri.",
-            "h1": "Sviluppo e automazione Salesforce",
+            "desc": "Sviluppo Apex, automazioni con Flow, Lightning Web Components e integrazioni REST su Salesforce, da uno studio indipendente di due sviluppatori.",
+            "h1": "Sviluppo e automazione su Salesforce",
             "service": "Sviluppo Salesforce",
-            "lede": "Personalizziamo Salesforce, implementiamo la logica di business, automatizziamo i processi, colleghiamo servizi esterni e manteniamo org esistenti. Lavoriamo direttamente con le aziende e come capacità di sviluppo per i partner di consulenza Salesforce.",
+            "lede": "Personalizziamo Salesforce, scriviamo la logica di business, automatizziamo i processi, lo colleghiamo agli altri sistemi e ci occupiamo delle org già in uso. Lavoriamo sia direttamente con le aziende sia come supporto allo sviluppo per i partner Salesforce.",
             "body": """
-      <h2>Cosa sviluppiamo</h2>
+      <h2>Cosa facciamo</h2>
       <ul>
-        <li><strong>Classi e trigger Apex</strong> per la logica di business che gli strumenti dichiarativi non coprono.</li>
-        <li><strong>Salesforce Flow</strong> per approvazioni, aggiornamenti dei record e processi in più passaggi.</li>
-        <li><strong>Lightning Web Components</strong> per interfacce personalizzate in pagine e app Lightning.</li>
-        <li><strong>Integrazioni REST API</strong> tra Salesforce e gli altri sistemi che usate.</li>
-        <li><strong>Troubleshooting e prestazioni</strong> su implementazioni esistenti: governor limit, query lente, automazioni che falliscono.</li>
+        <li><strong>Classi e trigger Apex</strong> per la logica che gli strumenti dichiarativi non riescono a gestire.</li>
+        <li><strong>Automazioni con Salesforce Flow</strong> per approvazioni, aggiornamento dei record e processi a più passaggi.</li>
+        <li><strong>Lightning Web Components</strong> per interfacce su misura nelle pagine e nelle app Lightning.</li>
+        <li><strong>Integrazioni via REST API</strong> tra Salesforce e gli altri sistemi che usi.</li>
+        <li><strong>Analisi e ottimizzazione</strong> di implementazioni esistenti: governor limit, query lente, automazioni che si bloccano.</li>
       </ul>
-      <h2>Per chi è</h2>
-      <p>Aziende che usano Salesforce e hanno bisogno di sviluppo personalizzato o di automazione, e società di consulenza Salesforce che cercano capacità di sviluppo o di integrazione su un perimetro definito. Siamo aperti sia a incarichi diretti sia al subappalto B2B.</p>
+      <h2>A chi ci rivolgiamo</h2>
+      <p>Alle aziende che usano Salesforce e hanno bisogno di sviluppo su misura o di automatizzare i processi, e alle società di consulenza Salesforce che cercano sviluppatori per un progetto ben definito. Lavoriamo sia con incarichi diretti sia in subappalto.</p>
       <h2>Come lavoriamo</h2>
-      <p>Partiamo dal processo di business, concordiamo requisiti e deliverable realistici e scriviamo Apex coperto da test e facile da mantenere per il vostro team. Preferiamo riusare ciò che la vostra org fa già bene invece di ricostruirlo.</p>""",
+      <p>Partiamo dal processo di business, fissiamo insieme obiettivi e consegne realistici e scriviamo codice Apex coperto da test, che il tuo team possa mantenere senza difficoltà. Se la tua org fa già bene qualcosa, la riusiamo invece di rifarla da capo.</p>""",
         },
     },
     {
@@ -168,29 +168,29 @@ SERVICES = [
         },
         "it": {
             "slug": "backend-integrazione-api",
-            "title": "Java, Spring Boot e integrazione API | BinaryBuilders",
-            "desc": "Servizi backend e integrazioni in Java, Spring Boot, Go e C#: REST API, microservizi, database e collegamenti tra sistemi aziendali.",
+            "title": "Sviluppo backend Java e integrazioni API | BinaryBuilders",
+            "desc": "Servizi backend e integrazioni in Java, Spring Boot, Go e C#: REST API, microservizi, database e collegamenti tra i sistemi aziendali.",
             "h1": "Sviluppo backend e integrazioni API",
             "service": "Sviluppo backend e integrazione API",
-            "lede": "Costruiamo servizi backend affidabili e colleghiamo applicazioni, API esterne, database e sistemi aziendali, così i dati arrivano dove servono senza lavoro manuale.",
+            "lede": "Sviluppiamo servizi backend affidabili e colleghiamo applicazioni, API esterne, database e sistemi aziendali, così i dati arrivano dove servono senza passaggi manuali.",
             "body": """
       <h2>Cosa sviluppiamo</h2>
       <h3>Servizi e API</h3>
       <ul>
-        <li><strong>REST API</strong> progettate attorno a contratti chiari e al versioning.</li>
-        <li><strong>Servizi Java e Spring Boot</strong>, dal singolo servizio ai microservizi e ai sistemi distribuiti.</li>
-        <li><strong>Servizi in Go e C#</strong> quando si adattano meglio al progetto o allo stack esistente.</li>
-        <li><strong>Logica di business e integrazione con i database</strong> per le regole da cui dipendono le vostre applicazioni.</li>
+        <li><strong>REST API</strong> con contratti chiari e versionamento.</li>
+        <li><strong>Servizi Java e Spring Boot</strong>, dal singolo servizio fino ai microservizi e ai sistemi distribuiti.</li>
+        <li><strong>Servizi in Go e C#</strong>, quando sono la scelta migliore per il progetto o per lo stack che hai già.</li>
+        <li><strong>Logica di business e accesso ai dati</strong>, cioè le regole su cui si reggono le tue applicazioni.</li>
       </ul>
       <h3>Integrazioni e automazione</h3>
       <ul>
-        <li><strong>Integrazioni con terze parti e sistemi aziendali</strong>, compresi i collegamenti tra Salesforce e altre piattaforme.</li>
-        <li><strong>Automazione dei processi</strong> che sostituisce i passaggi manuali ripetitivi tra sistemi.</li>
+        <li><strong>Integrazioni con servizi esterni e sistemi aziendali</strong>, compreso il collegamento tra Salesforce e altre piattaforme.</li>
+        <li><strong>Automazione dei processi</strong>, per eliminare i passaggi manuali ripetitivi tra un sistema e l'altro.</li>
       </ul>
-      <h2>Per chi è</h2>
-      <p>Startup e aziende che devono costruire o estendere un backend, team con sistemi che non comunicano tra loro, e agenzie o team di sviluppo che cercano capacità backend aggiuntiva per un progetto specifico.</p>
+      <h2>A chi ci rivolgiamo</h2>
+      <p>Alle startup e alle aziende che devono costruire o estendere un backend, a chi ha sistemi che non si parlano tra loro, e ad agenzie e team di sviluppo che cercano rinforzi sul backend per un progetto specifico.</p>
       <h2>Come lavoriamo</h2>
-      <p>Prima mappiamo i sistemi e i dati coinvolti, definiamo i punti di integrazione e i casi di errore, poi consegniamo codice pulito, manutenibile e testabile. Se un sistema esistente fa già il suo lavoro, ci colleghiamo a quello invece di sostituirlo.</p>""",
+      <p>Prima mappiamo i sistemi e i dati coinvolti, poi definiamo i punti di integrazione e cosa succede quando qualcosa va storto. Solo allora scriviamo il codice: pulito, manutenibile e testabile. Se un sistema esistente fa già il suo lavoro, ci colleghiamo a quello invece di sostituirlo.</p>""",
         },
     },
     {
@@ -218,23 +218,23 @@ SERVICES = [
         "it": {
             "slug": "software-su-misura",
             "title": "Software su misura, app React e Next.js | BinaryBuilders",
-            "desc": "Web app, dashboard e strumenti interni su misura in React, Next.js e TypeScript, collegati ai vostri servizi backend. Dalle singole funzionalità agli MVP.",
+            "desc": "Web app, dashboard e strumenti interni su misura in React, Next.js e TypeScript, collegati ai tuoi servizi backend. Dalla singola funzione all'MVP.",
             "h1": "Software su misura e applicazioni web",
             "service": "Sviluppo software su misura",
-            "lede": "Sviluppiamo applicazioni e funzionalità costruite su requisiti di business specifici, dai miglioramenti mirati a componenti applicativi più ampi e MVP.",
+            "lede": "Sviluppiamo applicazioni e funzionalità costruite sulle esigenze della tua azienda, dal singolo miglioramento a componenti più complessi, fino all'MVP.",
             "body": """
       <h2>Cosa sviluppiamo</h2>
       <ul>
-        <li><strong>Applicazioni web</strong> in React, Next.js e TypeScript che funzionano su qualsiasi schermo.</li>
-        <li><strong>Dashboard e strumenti interni</strong> che riuniscono in un solo posto i dati di cui il vostro team ha bisogno.</li>
-        <li><strong>MVP e funzionalità su misura</strong> per startup che devono rilasciare e imparare in fretta.</li>
-        <li><strong>Frontend e backend insieme</strong>, così l'interfaccia e i servizi che la alimentano sono progettati come un unico sistema.</li>
-        <li><strong>Componenti in C# o C++</strong> quando il progetto li richiede.</li>
+        <li><strong>Applicazioni web</strong> in React, Next.js e TypeScript, che funzionano bene su qualsiasi schermo.</li>
+        <li><strong>Dashboard e strumenti interni</strong> che raccolgono in un unico posto i dati che servono al tuo team.</li>
+        <li><strong>MVP e funzionalità su misura</strong> per startup che devono arrivare sul mercato e imparare in fretta.</li>
+        <li><strong>Frontend e backend insieme</strong>, così interfaccia e servizi nascono come un unico sistema.</li>
+        <li><strong>Componenti in C# o C++</strong>, quando il progetto li richiede.</li>
       </ul>
-      <h2>Per chi è</h2>
-      <p>Startup che hanno bisogno di supporto tecnico o di un MVP, piccole e medie imprese che cercano software costruito sui propri processi, e agenzie digitali che cercano uno sviluppo esterno affidabile.</p>
+      <h2>A chi ci rivolgiamo</h2>
+      <p>Alle startup che cercano supporto tecnico o devono costruire un MVP, alle piccole e medie imprese che vogliono software adatto ai propri processi e alle agenzie digitali che cercano sviluppatori esterni affidabili.</p>
       <h2>Come lavoriamo</h2>
-      <p>Partiamo dal capire il problema, poi concordiamo un perimetro e dei deliverable chiari. Preferiamo soluzioni pratiche e manutenibili alla complessità inutile, e vi teniamo aggiornati per tutto lo sviluppo.</p>""",
+      <p>Prima capiamo bene il problema, poi concordiamo cosa realizzare e cosa consegnare. Preferiamo soluzioni pratiche e facili da mantenere alla complessità fine a se stessa, e ti aggiorniamo per tutta la durata dello sviluppo.</p>""",
         },
     },
     {
@@ -261,24 +261,24 @@ SERVICES = [
         },
         "it": {
             "slug": "manutenzione-software",
-            "title": "Manutenzione e debugging del software | BinaryBuilders",
-            "desc": "Analisi, debugging, refactoring, ottimizzazione ed estensione di software esistente, più attività tecniche ben definite all'interno di progetti più ampi.",
-            "h1": "Manutenzione software e risoluzione di problemi tecnici",
+            "title": "Manutenzione software e debugging | BinaryBuilders",
+            "desc": "Debugging, refactoring, ottimizzazione e nuove funzionalità su software esistente, più attività tecniche mirate all'interno di progetti più grandi.",
+            "h1": "Manutenzione software e risoluzione dei problemi",
             "service": "Manutenzione software",
-            "lede": "Analizziamo, correggiamo, rifattorizziamo, ottimizziamo ed estendiamo il software che già usate, e prendiamo in carico attività tecniche ben definite all'interno di progetti più ampi.",
+            "lede": "Mettiamo mano al software che già usi: lo analizziamo, lo correggiamo, lo riorganizziamo, lo rendiamo più veloce e lo estendiamo. Possiamo anche prendere in carico attività tecniche precise all'interno di progetti più grandi.",
             "body": """
       <h2>Cosa facciamo</h2>
       <ul>
-        <li><strong>Troubleshooting e debugging</strong> di bug, job che falliscono e integrazioni che hanno smesso di funzionare.</li>
-        <li><strong>Refactoring</strong> che rende il codice esistente più facile da modificare senza riscriverlo da zero.</li>
-        <li><strong>Miglioramenti delle prestazioni</strong> in servizi backend, database e org Salesforce.</li>
-        <li><strong>Nuove funzionalità su codebase esistenti</strong>, seguendo le convenzioni già in uso.</li>
-        <li><strong>Contratti di manutenzione continuativa</strong> per i sistemi che richiedono cura regolare.</li>
+        <li><strong>Debugging</strong> di bug, job che falliscono e integrazioni che hanno smesso di funzionare.</li>
+        <li><strong>Refactoring</strong> per rendere il codice più facile da modificare, senza riscriverlo da zero.</li>
+        <li><strong>Ottimizzazione delle prestazioni</strong> di servizi backend, database e org Salesforce.</li>
+        <li><strong>Nuove funzionalità su codice esistente</strong>, rispettando le convenzioni già in uso.</li>
+        <li><strong>Contratti di manutenzione</strong> per i sistemi che hanno bisogno di cure regolari.</li>
       </ul>
-      <h2>Per chi è</h2>
-      <p>Aziende con software che funziona ma ha bisogno di attenzione, e team di sviluppo o agenzie che cercano capacità di ingegneria aggiuntiva per un lavoro ben definito.</p>
+      <h2>A chi ci rivolgiamo</h2>
+      <p>Alle aziende con software che funziona ma ha bisogno di attenzioni, e ai team di sviluppo o alle agenzie che cercano rinforzi per un lavoro ben definito.</p>
       <h2>Come lavoriamo</h2>
-      <p>Leggiamo il codice esistente prima di proporre modifiche, concordiamo cosa significa "finito" e lasciamo la codebase più facile da gestire di come l'abbiamo trovata.</p>""",
+      <p>Prima di proporre modifiche leggiamo il codice che c'è, concordiamo cosa vuol dire "finito" e lasciamo il progetto più semplice da gestire di come l'abbiamo trovato.</p>""",
         },
     },
 ]
@@ -313,24 +313,24 @@ ABOUT = {
     },
     "it": {
         "title": "Chi siamo | BinaryBuilders",
-        "desc": "BinaryBuilders è un team indipendente di due sviluppatori che unisce ingegneria enterprise, sviluppo web moderno, integrazione di sistemi e automazione.",
+        "desc": "BinaryBuilders è uno studio indipendente di due sviluppatori: software enterprise, sviluppo web, integrazione tra sistemi e automazione dei processi.",
         "h1": "Chi siamo",
-        "lede": "Siamo un team indipendente di ingegneria del software, fondato da due sviluppatori con esperienza professionale in software enterprise, sistemi backend, applicazioni frontend e automazione dei processi aziendali.",
+        "lede": "Siamo uno studio indipendente di sviluppo software, fondato da due sviluppatori con esperienza professionale su software enterprise, backend, frontend e automazione dei processi aziendali.",
         "body": """
-      <h2>Perché abbiamo iniziato</h2>
-      <p>Abbiamo creato BinaryBuilders con un obiettivo: aiutare le organizzazioni a risolvere problemi tecnici reali con software affidabile, manutenibile e scalabile. Preferiamo l'ingegneria pratica, requisiti chiari e la manutenibilità nel tempo alla complessità inutile.</p>
-      <h2>Cosa uniamo</h2>
-      <p>Ingegneria enterprise, sviluppo web moderno, integrazione di sistemi e automazione dei processi. In pratica: backend Java e Spring Boot, applicazioni React e Next.js, sviluppo Salesforce e le integrazioni che li collegano.</p>
+      <h2>Perché esistiamo</h2>
+      <p>Abbiamo fondato BinaryBuilders con un obiettivo semplice: aiutare le aziende a risolvere problemi tecnici concreti con software affidabile, facile da mantenere e pronto a crescere. Preferiamo soluzioni pratiche e requisiti chiari alla complessità inutile.</p>
+      <h2>Cosa sappiamo fare</h2>
+      <p>Mettiamo insieme sviluppo enterprise, web moderno, integrazione tra sistemi e automazione. In concreto: backend Java e Spring Boot, applicazioni React e Next.js, sviluppo Salesforce e tutto quello che serve per farli dialogare.</p>
       <h2>Come lavoriamo</h2>
       <ul>
-        <li><strong>Prima il problema.</strong> Capiamo il problema prima di proporre una soluzione.</li>
-        <li><strong>Perimetro realistico.</strong> Concordiamo requisiti e deliverable che possiamo davvero rispettare.</li>
-        <li><strong>Codice manutenibile.</strong> Pulito, testato e facile da prendere in carico per il vostro team.</li>
-        <li><strong>Riusare prima di ricostruire.</strong> Se un sistema esistente fa già il lavoro, ci colleghiamo a quello.</li>
-        <li><strong>Comunicazione chiara</strong> per tutto lo sviluppo, su progetti nuovi e su codebase esistenti.</li>
+        <li><strong>Prima il problema.</strong> Lo capiamo a fondo prima di proporre una soluzione.</li>
+        <li><strong>Obiettivi realistici.</strong> Concordiamo requisiti e consegne che possiamo davvero rispettare.</li>
+        <li><strong>Codice manutenibile.</strong> Pulito, testato e facile da prendere in mano per il tuo team.</li>
+        <li><strong>Riusare prima di rifare.</strong> Se un sistema esistente funziona, ci colleghiamo a quello.</li>
+        <li><strong>Comunicazione chiara</strong> per tutto il progetto, che si parta da zero o da codice già esistente.</li>
       </ul>
-      <h2>Un team piccolo, per scelta</h2>
-      <p>Siamo due ingegneri, non una grande società di consulenza. Parlate direttamente con chi scrive il codice, le responsabilità sono chiare e la consegna resta concentrata. Lavoriamo al meglio su progetti con un perimetro chiaro, integrazioni tecniche, attività di sviluppo mirate e manutenzione continuativa, sia direttamente con le aziende sia in subappalto per agenzie e partner di consulenza.</p>
+      <h2>Piccoli per scelta</h2>
+      <p>Siamo due sviluppatori, non una grande società di consulenza. Parli direttamente con chi scrive il codice, sai sempre chi si occupa di cosa e il lavoro resta concentrato. Diamo il meglio su progetti ben definiti, integrazioni, sviluppi mirati e manutenzione continuativa, sia direttamente con le aziende sia in subappalto per agenzie e società di consulenza.</p>
       <h2>Il team</h2>
       <ul class="more-list">
         <li><a href="/it/giuseppe-scappaticci">Giuseppe Scappaticci</a></li>
@@ -352,9 +352,9 @@ PEOPLE = [
         },
         "it": {
             "title": "Giuseppe Scappaticci | Software engineer, BinaryBuilders",
-            "desc": "Giuseppe Scappaticci ha fondato BinaryBuilders con Michele Sabatino. Software engineer dal 2021, in precedenza consulente Salesforce e backend in Accenture.",
-            "lede": "Ho fondato BinaryBuilders insieme a Michele Sabatino. Lavoro come software engineer dal 2021.",
-            "background": "Ho lavorato come consulente in Accenture, sviluppando soluzioni Salesforce e servizi backend su progetti enterprise. Porto in BinaryBuilders questa esperienza con i processi CRM e i sistemi che li circondano.",
+            "desc": "Giuseppe Scappaticci ha fondato BinaryBuilders con Michele Sabatino. Nel software dal 2021, prima come consulente Salesforce e backend in Accenture.",
+            "lede": "Ho fondato BinaryBuilders con Michele Sabatino. Lavoro nello sviluppo software dal 2021.",
+            "background": "Ho lavorato in Accenture come consulente, sviluppando soluzioni Salesforce e servizi backend per progetti enterprise. In BinaryBuilders porto questa esperienza: i processi CRM e tutti i sistemi che ci girano intorno.",
         },
     },
     {
@@ -368,9 +368,9 @@ PEOPLE = [
         },
         "it": {
             "title": "Michele Sabatino | Software engineer, BinaryBuilders",
-            "desc": "Michele Sabatino ha fondato BinaryBuilders con Giuseppe Scappaticci. Nel software dal 2021: dalla cybersecurity allo sviluppo Java per aziende campane.",
-            "lede": "Ho fondato BinaryBuilders insieme a Giuseppe Scappaticci. Lavoro nel software dal 2021.",
-            "background": "Ho iniziato nella cybersecurity, poi ho scelto lo sviluppo Java, lavorando per due aziende campane.",
+            "desc": "Michele Sabatino ha fondato BinaryBuilders con Giuseppe Scappaticci. Nel software dal 2021: prima la cybersecurity, poi lo sviluppo Java per aziende campane.",
+            "lede": "Ho fondato BinaryBuilders con Giuseppe Scappaticci. Lavoro nel software dal 2021.",
+            "background": "Ho iniziato nella cybersecurity, poi ho cambiato strada e ho cominciato a sviluppare in Java, lavorando per due aziende campane.",
         },
     },
 ]
@@ -379,8 +379,8 @@ PEOPLE_UI = {
     "en": {"background": "Background", "work": "At BinaryBuilders", "work_p": "{other} and I both work across every service we offer:",
            "langs": "Languages and location", "langs_p": "Italian (native) and English (C1). I am from Naples, Italy.",
            "links": "Profiles", "team": "The team"},
-    "it": {"background": "Percorso", "work": "In BinaryBuilders", "work_p": "Io e {other} lavoriamo entrambi su tutti i servizi che offriamo:",
-           "langs": "Lingue e provenienza", "langs_p": "Italiano (madrelingua) e inglese (C1). Sono di Napoli.",
+    "it": {"background": "Percorso", "work": "In BinaryBuilders", "work_p": "Con {other} ci occupiamo di tutti i servizi dello studio:",
+           "langs": "Lingue e città", "langs_p": "Italiano madrelingua e inglese a livello C1. Sono di Napoli.",
            "links": "Profili", "team": "Il team"},
 }
 
