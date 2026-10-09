@@ -91,16 +91,19 @@ p, li { text-wrap: pretty; } /* no single word left alone on the last line */
   font-size: clamp(3.25rem, 10vw, 9.5rem); font-weight: 800;
   letter-spacing: -0.04em; line-height: 1;
 }
-/* Desktop: wide poster face, sized by whichever runs out first, width or height (22rem = header, CTAs, footer). */
+/* Desktop: wide poster face, sized by whichever runs out first, width or height (27rem = header, intro, CTAs, footer). */
 @media (min-width: 768px) {
   .hero h1 {
     font-family: "Martian Mono", "Martian Fallback", monospace; font-stretch: 112.5%; letter-spacing: -0.05em;
-    font-size: clamp(3rem, min(14vw, (100dvh - 22rem) / 3), 13rem);
+    font-size: clamp(3rem, min(14vw, (100dvh - 27rem) / 3), 13rem);
   }
 }
+.hero .intro { max-width: 64ch; margin-top: clamp(1rem, 3vh, 1.75rem); color: var(--text); } /* text colour: stays readable over the bits */
 .ctas { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: clamp(1.5rem, 4vh, 2.5rem); }
 @media (max-width: 767px) {
-  .ctas { display: grid; gap: .5rem; }
+  .ctas { display: grid; gap: .5rem; margin-top: 1.25rem; }
+  .hero { padding-block: 1rem 1.25rem; }
+  .hero .intro { font-size: .85rem; margin-top: .75rem; }
   .ctas .btn-lg { padding: .8rem 1.25rem; font-size: 1rem; }
 }
 
@@ -120,7 +123,12 @@ p, li { text-wrap: pretty; } /* no single word left alone on the last line */
 }
 .footer .meta { text-align: right; }
 .footer .meta .links { justify-content: flex-end; }
-@media (max-width: 767px) { .footer .meta { text-align: left; } .footer .meta .links { justify-content: flex-start; } }
+@media (max-width: 767px) {
+  /* Phones: About/Privacy and the copyright share one row. */
+  .footer .meta { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; width: 100%; }
+  .footer .meta .links { justify-content: flex-start; }
+  .hero ~ .footer nav > p:first-child { display: none; } /* the home intro already says it */
+}
 .footer .links { display: flex; flex-wrap: wrap; gap: 0 1.5ch; }
 .footer a { color: var(--text); display: inline-block; padding-block: .3rem; } /* taller tap target, same look */
 
@@ -149,7 +157,12 @@ p, li { text-wrap: pretty; } /* no single word left alone on the last line */
 
 /* Service pages, "scannable blocks": full container width, tiles instead of bullets, sections side by side. */
 .svc article { max-width: none; }
-.svc .lede { max-width: 72ch; }
+.svc .lede, .svc article > p { max-width: 72ch; }
+/* One sentence set large: the point of a section, said once. */
+.svc .statement {
+  color: var(--text); font-weight: 800; font-size: clamp(1.4rem, 3vw, 2.25rem); letter-spacing: -0.03em; line-height: 1.15; margin-top: 1.25rem;
+}
+@media (min-width: 768px) { .svc .statement { font-family: "Martian Mono", "Martian Fallback", monospace; font-stretch: 112.5%; } }
 .svc .blocks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; list-style: none; padding: 0; margin-top: 1.25rem; }
 .svc .blocks li { margin: 0; padding: 1.5rem; border: 1px solid var(--line); border-radius: var(--radius); }
 .svc .blocks strong { display: block; margin-bottom: .5rem; }
@@ -189,6 +202,7 @@ p, li { text-wrap: pretty; } /* no single word left alone on the last line */
 /* CTAs arrive after the headline has decoded. */
 @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: no-preference) {
+  .hero .intro { animation: rise .8s var(--ease) .75s both; }
   .ctas { animation: rise .8s var(--ease) .9s both; }
 }
 

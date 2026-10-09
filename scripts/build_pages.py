@@ -20,6 +20,7 @@ UI = {
         "home_title": "BinaryBuilders | Java, Salesforce and API Development",
         "home_desc": "BinaryBuilders is an independent software studio: Java and Spring Boot backends, Salesforce, React and Next.js apps, and the integrations between them.",
         "home_og": "Backend, web, Salesforce and integration work from an independent two-developer studio.",
+        "intro": "Independent software studio. Salesforce, Java and Spring Boot backends, React apps, and the integrations between them.",
         "studio": "Software engineering studio", "nav": "Services", "book": "Book a call",
         "links": ["Salesforce", "Java and APIs", "Web apps", "Maintenance"],
         "contact_h": "Tell us about your project",
@@ -34,6 +35,7 @@ UI = {
         "home_title": "BinaryBuilders | Sviluppo software Java, Salesforce e API",
         "home_desc": "Siamo un piccolo studio indipendente di sviluppo software: backend Java e Spring Boot, Salesforce, applicazioni React e Next.js e integrazioni tra sistemi.",
         "home_og": "Backend, web, Salesforce e integrazioni: uno studio indipendente di sviluppo software.",
+        "intro": "Studio indipendente di sviluppo software. Salesforce, backend Java e Spring Boot, app React e integrazioni tra sistemi.",
         "studio": "Studio di sviluppo software", "nav": "Servizi", "book": "Prenota una call",
         "links": ["Salesforce", "Java e API", "Web app", "Manutenzione"],
         "contact_h": "Parlaci del tuo progetto",
@@ -290,22 +292,25 @@ ABOUT = {
         "h1": "About BinaryBuilders",
         "lede": "We're an independent software studio run by two developers. Our background is in enterprise software, backend systems, frontend applications and business process automation.",
         "body": """
-      <h2>Why we started</h2>
-      <p>We started BinaryBuilders to help companies solve real technical problems with software that's reliable, easy to maintain and ready to grow. We'd rather keep things practical and clearly defined than add complexity nobody needs.</p>
-      <h2>What we bring together</h2>
-      <p>Enterprise engineering, modern web development, systems integration and business automation. In practice: Java and Spring Boot backends, React and Next.js applications, Salesforce development, and the integrations that tie them together.</p>
+      <div class="pair">
+      <section><h2>Why we started</h2>
+      <p>We started BinaryBuilders to help companies solve real technical problems with software that's reliable, easy to maintain and ready to grow. We'd rather keep things practical and clearly defined than add complexity nobody needs.</p></section>
+      <section><h2>What we bring together</h2>
+      <p>Enterprise engineering, modern web development, systems integration and business automation. In practice: Java and Spring Boot backends, React and Next.js applications, Salesforce development, and the integrations that tie them together.</p></section>
+      </div>
       <h2>How we work</h2>
-      <ul>
-        <li><strong>Problem first.</strong> We make sure we understand the problem before proposing a solution.</li>
-        <li><strong>Realistic scope.</strong> We agree on requirements and deliverables we can actually meet.</li>
-        <li><strong>Maintainable code.</strong> Clean, tested and easy for your team to take over.</li>
-        <li><strong>Reuse before rebuild.</strong> If an existing system does the job, we connect to it.</li>
-        <li><strong>Clear communication</strong> from start to finish, whether we're building something new or working in an existing codebase.</li>
+      <ul class="blocks">
+        <li><strong>Problem first</strong> We make sure we understand the problem before proposing a solution.</li>
+        <li><strong>Realistic scope</strong> We agree on requirements and deliverables we can actually meet.</li>
+        <li><strong>Maintainable code</strong> Clean, tested and easy for your team to take over.</li>
+        <li><strong>Reuse before rebuild</strong> If an existing system does the job, we connect to it.</li>
+        <li><strong>Clear communication</strong> From start to finish, whether we're building something new or working in an existing codebase.</li>
       </ul>
       <h2>Small on purpose</h2>
-      <p>We're two developers, not a big consultancy. You talk directly to the people writing the code, it's always clear who owns what, and the work stays focused. We do our best work on well-defined projects, integrations, targeted development tasks and ongoing maintenance, either directly with companies or as subcontractors for agencies and consultancies.</p>
+      <p class="statement">We're two developers, not a big consultancy.</p>
+      <p>You talk directly to the people writing the code, it's always clear who owns what, and the work stays focused. We do our best work on well-defined projects, integrations, targeted development tasks and ongoing maintenance, either directly with companies or as subcontractors for agencies and consultancies.</p>
       <h2>The team</h2>
-      <ul class="more-list">
+      <ul class="more-list cards">
         <li><a href="/giuseppe-scappaticci">Giuseppe Scappaticci</a></li>
         <li><a href="/michele-sabatino">Michele Sabatino</a></li>
       </ul>""",
@@ -316,22 +321,25 @@ ABOUT = {
         "h1": "Chi siamo",
         "lede": "Siamo uno studio indipendente di sviluppo software, fondato da due sviluppatori con esperienza professionale su software enterprise, backend, frontend e automazione dei processi aziendali.",
         "body": """
-      <h2>Perché esistiamo</h2>
-      <p>Abbiamo fondato BinaryBuilders con un obiettivo semplice: aiutare le aziende a risolvere problemi tecnici concreti con software affidabile, facile da mantenere e pronto a crescere. Preferiamo soluzioni pratiche e requisiti chiari alla complessità inutile.</p>
-      <h2>Cosa sappiamo fare</h2>
-      <p>Mettiamo insieme sviluppo enterprise, web moderno, integrazione tra sistemi e automazione. In concreto: backend Java e Spring Boot, applicazioni React e Next.js, sviluppo Salesforce e tutto quello che serve per farli dialogare.</p>
+      <div class="pair">
+      <section><h2>Perché esistiamo</h2>
+      <p>Abbiamo fondato BinaryBuilders con un obiettivo semplice: aiutare le aziende a risolvere problemi tecnici concreti con software affidabile, facile da mantenere e pronto a crescere. Preferiamo soluzioni pratiche e requisiti chiari alla complessità inutile.</p></section>
+      <section><h2>Cosa sappiamo fare</h2>
+      <p>Mettiamo insieme sviluppo enterprise, web moderno, integrazione tra sistemi e automazione. In concreto: backend Java e Spring Boot, applicazioni React e Next.js, sviluppo Salesforce e tutto quello che serve per farli dialogare.</p></section>
+      </div>
       <h2>Come lavoriamo</h2>
-      <ul>
-        <li><strong>Prima il problema.</strong> Lo capiamo a fondo prima di proporre una soluzione.</li>
-        <li><strong>Obiettivi realistici.</strong> Concordiamo requisiti e consegne che possiamo davvero rispettare.</li>
-        <li><strong>Codice manutenibile.</strong> Pulito, testato e facile da prendere in mano per il tuo team.</li>
-        <li><strong>Riusare prima di rifare.</strong> Se un sistema esistente funziona, ci colleghiamo a quello.</li>
-        <li><strong>Comunicazione chiara</strong> per tutto il progetto, che si parta da zero o da codice già esistente.</li>
+      <ul class="blocks">
+        <li><strong>Prima il problema</strong> Lo capiamo a fondo prima di proporre una soluzione.</li>
+        <li><strong>Obiettivi realistici</strong> Concordiamo requisiti e consegne che possiamo davvero rispettare.</li>
+        <li><strong>Codice manutenibile</strong> Pulito, testato e facile da prendere in mano per il tuo team.</li>
+        <li><strong>Riusare prima di rifare</strong> Se un sistema esistente funziona, ci colleghiamo a quello.</li>
+        <li><strong>Comunicazione chiara</strong> Per tutto il progetto, che si parta da zero o da codice già esistente.</li>
       </ul>
       <h2>Piccoli per scelta</h2>
-      <p>Siamo due sviluppatori, non una grande società di consulenza. Parli direttamente con chi scrive il codice, sai sempre chi si occupa di cosa e il lavoro resta concentrato. Diamo il meglio su progetti ben definiti, integrazioni, sviluppi mirati e manutenzione continuativa, sia direttamente con le aziende sia in subappalto per agenzie e società di consulenza.</p>
+      <p class="statement">Siamo due sviluppatori, non una grande società di consulenza.</p>
+      <p>Parli direttamente con chi scrive il codice, sai sempre chi si occupa di cosa e il lavoro resta concentrato. Diamo il meglio su progetti ben definiti, integrazioni, sviluppi mirati e manutenzione continuativa, sia direttamente con le aziende sia in subappalto per agenzie e società di consulenza.</p>
       <h2>Il team</h2>
-      <ul class="more-list">
+      <ul class="more-list cards">
         <li><a href="/it/giuseppe-scappaticci">Giuseppe Scappaticci</a></li>
         <li><a href="/it/michele-sabatino">Michele Sabatino</a></li>
       </ul>""",
@@ -517,6 +525,7 @@ def home(lang):
 
   <main class="hero wrap">
     <h1 class="decode">Build. Automate. Scale.</h1>
+    <p class="intro">{ui["intro"]}</p>
     {ctas(lang)}
   </main>
 
@@ -612,7 +621,7 @@ def about(lang):
         {ctas(lang)}
       </section>"""
     return doc_page(lang, head(lang, p["title"], p["desc"], ui["about"], [JB, MARTIAN], None, alternates, ld),
-                    alternates[ui["other"]], content)
+                    alternates[ui["other"]], content, "doc svc")
 
 
 def person(lang, p):
