@@ -74,18 +74,25 @@ p { color: var(--muted); }
 .btn-sm { padding: .45rem .9rem; font-size: .9rem; }
 .btn-lg { padding: 1rem 1.75rem; font-size: 1.05rem; }
 
-.top { display: flex; align-items: center; height: 72px; }
+.top { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.lang { font-size: .8rem; color: var(--muted); padding: .5rem 0; }
+.lang:hover { color: var(--text); }
 .brand img { display: block; height: 32px; width: auto; }
 
 /* Poster headline anchored to the bottom of the screen */
 .hero { display: grid; align-content: end; padding-block: 2rem clamp(1.5rem, 4vh, 3rem); }
+/* One word per line on every screen (min-content breaks at each space): the stacked poster. */
 .hero h1 {
+  width: min-content;
   font-size: clamp(3.25rem, 10vw, 9.5rem); font-weight: 800;
   letter-spacing: -0.04em; line-height: 1;
 }
-/* Desktop: wide poster face. Too wide for phones, so they keep JetBrains Mono. */
+/* Desktop: wide poster face, sized by whichever runs out first, width or height (22rem = header, CTAs, footer). */
 @media (min-width: 768px) {
-  .hero h1 { font-family: "Martian Mono", "Martian Fallback", monospace; font-stretch: 112.5%; font-size: clamp(3rem, 7.4vw, 7.25rem); letter-spacing: -0.05em; }
+  .hero h1 {
+    font-family: "Martian Mono", "Martian Fallback", monospace; font-stretch: 112.5%; letter-spacing: -0.05em;
+    font-size: clamp(3rem, min(14vw, (100dvh - 22rem) / 3), 13rem);
+  }
 }
 .ctas { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: clamp(1.5rem, 4vh, 2.5rem); }
 @media (max-width: 767px) {
@@ -125,19 +132,6 @@ p { color: var(--muted); }
 .doc .contact { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--line); }
 .doc .contact h2 { margin-top: 0; }
 .doc .ctas { animation: none; }
-
-/* Call dialog */
-.call {
-  width: min(100% - 2rem, 420px); margin: auto; padding: 1.75rem;
-  background: var(--bg); color: var(--text);
-  border: 1px solid var(--line); border-radius: var(--radius);
-  box-shadow: 0 24px 80px color-mix(in oklab, var(--text) 14%, transparent);
-}
-.call::backdrop { background: color-mix(in oklab, var(--bg) 55%, transparent); backdrop-filter: blur(6px); }
-.call h2 { font-size: 1.1rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
-.call-options { display: grid; gap: .5rem; margin-bottom: .75rem; }
-.call form { display: flex; justify-content: end; }
-.call form .btn { color: var(--muted); }
 
 /* CTAs arrive after the headline has decoded. */
 @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }

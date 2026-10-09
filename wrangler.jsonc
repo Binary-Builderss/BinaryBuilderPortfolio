@@ -1,5 +1,7 @@
 {
   "name": "binarybuilderportfolio",
   "compatibility_date": "2026-09-01",
-  "assets": { "directory": "./public" }
+  "main": "src/index.js",
+  // The Worker only handles "/" (language redirect); everything else is a static file from public/.
+  "assets": { "directory": "./public", "binding": "ASSETS", "run_worker_first": ["/"] }
 }

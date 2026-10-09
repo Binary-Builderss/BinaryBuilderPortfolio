@@ -3,22 +3,12 @@
 
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// Call dialog. Numbers are assembled on tap so no full phone number sits in the HTML for scrapers.
-const phones = { giuseppe: ["+39", "351", "906", "9868"], michele: ["+39", "348", "533", "4653"] };
-const callDialog = document.getElementById("call");
-document.querySelector("[data-open-call]").addEventListener("click", () => callDialog.showModal());
-if (location.hash === "#call") callDialog.showModal(); // "Call us" on the service pages links here
-callDialog.addEventListener("close", () => { if (location.hash) history.replaceState(null, "", location.pathname); });
-callDialog.querySelectorAll("[data-call]").forEach((btn) =>
-  btn.addEventListener("click", () => {
-    location.href = "tel:" + phones[btn.dataset.call].join("");
-    callDialog.close();
-  }));
-
-// Headline: wrap each letter, show a random bit over it, resolve left to right.
+// Headline: wrap each letter, show a random bit over it, resolve left to right, repeat every 30s.
+// Between runs the h1 goes back to plain text, so screen readers never meet the per-letter spans for long.
 const h1 = document.querySelector(".decode");
-if (!reduce) {
-  h1.innerHTML = h1.textContent
+const headline = h1.textContent;
+function decode() {
+  h1.innerHTML = headline
     .split(" ")
     .map((word) => `<span class="w">${[...word].map((ch) => `<span class="ch">${ch}</span>`).join("")}</span>`)
     .join(" ");
@@ -30,9 +20,10 @@ if (!reduce) {
   const timer = setInterval(() => {
     flip();
     if (done < chars.length) delete chars[done++].dataset.g;
-    else clearInterval(timer);
+    else { clearInterval(timer); h1.textContent = headline; }
   }, 45);
 }
+if (!reduce) { decode(); setInterval(decode, 30000); }
 
 // Bit field
 const canvas = document.querySelector(".bits");
