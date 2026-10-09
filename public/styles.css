@@ -29,6 +29,7 @@
   --on-accent: #fafafa;
   --radius: 12px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --bits-tile: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='216' height='108' font-family='monospace' font-size='12' font-weight='500' text-anchor='middle' fill='%2352525b'><text x='9' y='13'>1</text><text x='27' y='13'>0</text><text x='45' y='13'>1</text><text x='63' y='13'>0</text><text x='81' y='13'>0</text><text x='99' y='13'>0</text><text x='117' y='13'>1</text><text x='135' y='13'>0</text><text x='153' y='13'>0</text><text x='171' y='13'>0</text><text x='189' y='13'>0</text><text x='207' y='13'>1</text><text x='9' y='31'>1</text><text x='27' y='31'>0</text><text x='45' y='31'>0</text><text x='63' y='31'>0</text><text x='81' y='31'>1</text><text x='99' y='31'>0</text><text x='117' y='31'>0</text><text x='135' y='31'>0</text><text x='153' y='31'>0</text><text x='171' y='31'>1</text><text x='189' y='31'>0</text><text x='207' y='31'>0</text><text x='9' y='49'>0</text><text x='27' y='49'>0</text><text x='45' y='49'>1</text><text x='63' y='49'>1</text><text x='81' y='49'>0</text><text x='99' y='49'>0</text><text x='117' y='49'>1</text><text x='135' y='49'>0</text><text x='153' y='49'>0</text><text x='171' y='49'>0</text><text x='189' y='49'>1</text><text x='207' y='49'>0</text><text x='9' y='67'>0</text><text x='27' y='67'>0</text><text x='45' y='67'>0</text><text x='63' y='67'>1</text><text x='81' y='67'>1</text><text x='99' y='67'>1</text><text x='117' y='67'>1</text><text x='135' y='67'>1</text><text x='153' y='67'>1</text><text x='171' y='67'>1</text><text x='189' y='67'>0</text><text x='207' y='67'>0</text><text x='9' y='85'>0</text><text x='27' y='85'>0</text><text x='45' y='85'>1</text><text x='63' y='85'>1</text><text x='81' y='85'>1</text><text x='99' y='85'>1</text><text x='117' y='85'>1</text><text x='135' y='85'>0</text><text x='153' y='85'>0</text><text x='171' y='85'>1</text><text x='189' y='85'>0</text><text x='207' y='85'>1</text><text x='9' y='103'>0</text><text x='27' y='103'>1</text><text x='45' y='103'>1</text><text x='63' y='103'>0</text><text x='81' y='103'>0</text><text x='99' y='103'>1</text><text x='117' y='103'>1</text><text x='135' y='103'>1</text><text x='153' y='103'>1</text><text x='171' y='103'>1</text><text x='189' y='103'>0</text><text x='207' y='103'>0</text></svg>");
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
@@ -37,6 +38,7 @@
     --text: #f2f2f4;
     --muted: #a1a1aa;
     --line: #2a2a30;
+    --bits-tile: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='216' height='108' font-family='monospace' font-size='12' font-weight='500' text-anchor='middle' fill='%23a1a1aa'><text x='9' y='13'>1</text><text x='27' y='13'>1</text><text x='45' y='13'>0</text><text x='63' y='13'>0</text><text x='81' y='13'>1</text><text x='99' y='13'>1</text><text x='117' y='13'>1</text><text x='135' y='13'>1</text><text x='153' y='13'>1</text><text x='171' y='13'>0</text><text x='189' y='13'>1</text><text x='207' y='13'>1</text><text x='9' y='31'>0</text><text x='27' y='31'>0</text><text x='45' y='31'>1</text><text x='63' y='31'>0</text><text x='81' y='31'>0</text><text x='99' y='31'>1</text><text x='117' y='31'>0</text><text x='135' y='31'>0</text><text x='153' y='31'>1</text><text x='171' y='31'>1</text><text x='189' y='31'>1</text><text x='207' y='31'>0</text><text x='9' y='49'>0</text><text x='27' y='49'>1</text><text x='45' y='49'>1</text><text x='63' y='49'>1</text><text x='81' y='49'>0</text><text x='99' y='49'>1</text><text x='117' y='49'>1</text><text x='135' y='49'>1</text><text x='153' y='49'>1</text><text x='171' y='49'>1</text><text x='189' y='49'>0</text><text x='207' y='49'>0</text><text x='9' y='67'>0</text><text x='27' y='67'>0</text><text x='45' y='67'>0</text><text x='63' y='67'>0</text><text x='81' y='67'>0</text><text x='99' y='67'>0</text><text x='117' y='67'>1</text><text x='135' y='67'>0</text><text x='153' y='67'>1</text><text x='171' y='67'>1</text><text x='189' y='67'>0</text><text x='207' y='67'>0</text><text x='9' y='85'>1</text><text x='27' y='85'>1</text><text x='45' y='85'>1</text><text x='63' y='85'>0</text><text x='81' y='85'>0</text><text x='99' y='85'>1</text><text x='117' y='85'>1</text><text x='135' y='85'>1</text><text x='153' y='85'>1</text><text x='171' y='85'>1</text><text x='189' y='85'>0</text><text x='207' y='85'>1</text><text x='9' y='103'>1</text><text x='27' y='103'>0</text><text x='45' y='103'>0</text><text x='63' y='103'>0</text><text x='81' y='103'>0</text><text x='99' y='103'>1</text><text x='117' y='103'>0</text><text x='135' y='103'>0</text><text x='153' y='103'>1</text><text x='171' y='103'>0</text><text x='189' y='103'>0</text><text x='207' y='103'>0</text></svg>");
     color-scheme: dark;
   }
 }
@@ -152,18 +154,31 @@ p, li { text-wrap: pretty; } /* no single word left alone on the last line */
 .svc .blocks li { margin: 0; padding: 1.5rem; border: 1px solid var(--line); border-radius: var(--radius); }
 .svc .blocks strong { display: block; margin-bottom: .5rem; }
 .svc .blocks li:last-child:nth-child(odd) { grid-column: 1 / -1; } /* odd count: no empty cell */
-.svc .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 3rem; }
-.svc .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.25rem; }
-.svc .cards li { margin: 0; }
-.svc .cards a {
-  display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; height: 100%; padding: 1.5rem;
-  border: 1px solid var(--line); border-radius: var(--radius); text-decoration: none; font-weight: 600;
-  transition: border-color .2s var(--ease);
+/* The wide tile carries the bit texture (the only decoration in the system) at its empty right end, desktop only. */
+.svc .blocks li:last-child:nth-child(odd) { position: relative; isolation: isolate; }
+@media (min-width: 768px) {
+  .svc .blocks li:last-child:nth-child(odd)::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; opacity: .35;
+    background: var(--bits-tile);
+    mask-image: linear-gradient(to left, #000, transparent 32%);
+  }
 }
-.svc .cards a:hover { border-color: var(--muted); }
-.svc .cards a::after { content: "\2192"; }
+.svc .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 3rem; }
+/* Other services: an editorial index, big rows with one rule between them; hovering one dims the rest. */
+.svc .cards { list-style: none; padding: 0; margin-top: 1rem; }
+.svc .cards li { margin: 0; border-top: 1px solid var(--line); }
+.svc .cards li:last-child { border-bottom: 1px solid var(--line); }
+.svc .cards a {
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-block: 1.25rem;
+  text-decoration: none; font-weight: 800; font-size: clamp(1.15rem, 2.4vw, 1.75rem); letter-spacing: -0.03em; line-height: 1.15;
+  transition: color .3s var(--ease);
+}
+@media (min-width: 768px) { .svc .cards a { font-family: "Martian Mono", "Martian Fallback", monospace; font-stretch: 112.5%; } }
+.svc .cards a::after { content: "\2192"; flex: none; transition: transform .3s var(--ease); }
+.svc .cards a:is(:hover, :focus-visible)::after { transform: translateX(.5rem); }
+.svc .cards:is(:hover, :has(:focus-visible)) a:not(:hover, :focus-visible) { color: var(--muted); }
 .svc .contact { padding: clamp(1.5rem, 4vw, 2.5rem); border: 1px solid var(--line); border-radius: var(--radius); }
-@media (max-width: 767px) { .svc .blocks, .svc .pair, .svc .cards { grid-template-columns: 1fr; } }
+@media (max-width: 767px) { .svc .blocks, .svc .pair { grid-template-columns: 1fr; } }
 
 /* Content pages: a live band of the bit field behind the header, fading out downward. */
 .band {
