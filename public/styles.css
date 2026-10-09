@@ -165,16 +165,46 @@ p, li { text-wrap: pretty; } /* no single word left alone on the last line */
 .svc .contact { padding: clamp(1.5rem, 4vw, 2.5rem); border: 1px solid var(--line); border-radius: var(--radius); }
 @media (max-width: 767px) { .svc .blocks, .svc .pair, .svc .cards { grid-template-columns: 1fr; } }
 
-/* Frozen slice of the bit field behind the top of content pages (generated text, 18px cells like the canvas). */
+/* Content pages: a live band of the bit field behind the header, fading out downward. */
 .band {
-  position: absolute; inset: 0 0 auto 0; z-index: -1; height: 252px; overflow: hidden; margin: 0;
-  font: 500 12px/18px "JetBrains Mono", monospace; letter-spacing: 10.8px; padding-left: 5px;
-  color: var(--muted); opacity: .18; user-select: none; pointer-events: none;
-  mask-image: linear-gradient(to bottom, #000, transparent 75%);
+  position: absolute; inset: 0 0 auto 0; height: 252px; opacity: .6;
+  mask-image: linear-gradient(to bottom, #000, transparent 85%);
 }
+
+/* Terminal caret cursor (main.js adds it for a real mouse only; links keep the native hand). */
+.has-caret, .has-caret body { cursor: none; }
+.caret {
+  position: fixed; top: 0; left: 0; z-index: 10; pointer-events: none;
+  width: 10px; height: 18px; margin: -9px 0 0 -5px; background: var(--text);
+  transition: opacity .15s, scale .2s var(--ease);
+}
+.caret.over { opacity: 0; scale: .4; }
+.caret.rest { animation: blink 1.06s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
 
 /* CTAs arrive after the headline has decoded. */
 @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: no-preference) {
   .ctas { animation: rise .8s var(--ease) .9s both; }
+}
+
+/* Page to page: the logo and language switch stay put, the page underneath lifts out and the next one rises in. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  .brand { view-transition-name: brand; }
+  .lang { view-transition-name: lang; }
+  ::view-transition-old(root) { animation: vt-out .3s var(--ease) both; }
+  ::view-transition-new(root) { animation: vt-in .6s var(--ease) both; }
+}
+@keyframes vt-out { to { opacity: 0; transform: translateY(-2rem); } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(2rem); } }
+
+/* Content pages: sections rise in as they scroll into view (only where scroll timelines exist; elsewhere they are just there). */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .doc article > :is(h2, h3, p, ul, section, div), .doc .blocks li, .doc .cards li {
+      animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 60%;
+    }
+    .doc article > :is(.blocks, .cards) { animation: none; }
+  }
 }

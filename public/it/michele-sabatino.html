@@ -49,22 +49,10 @@
   <link rel="preload" href="/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/martian-mono.woff2" as="font" type="font/woff2" crossorigin media="(min-width: 768px)">
   <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/main.js"></script>
 </head>
 <body>
-  <pre class="band" aria-hidden="true"> 10100010000110001                                                                                           0
-0001000011001000100                                                                                         00
-11111110000111110010                                                                                      1011
-001111100110011111011                                                                                    00100
-1001110011101111100000                                                                                 0001011
-00111001111101100001001                                                                              000001000
-101111001111100011100010                                                                            0101101010
-001001100111011110000101                                      01011001010110                     1110000001011
-0000001000101011100111000                                   1000001001100001001001             101110101010111
-0010010010101001100011110                                 1101011101110000011001011101101001010010001010111000
-0010001101101101000010101                                11100100110000110001101010011011110010100110110000100
-1010110001110100100000001                               011000110100011010001110110000111001011001111110010101
-1011100000110101011100011                              1101111010111000111011011101001001110110100011011000111
-1111101110000010111100000                             10101100111011101110001011111000111001110000001000000101</pre>
+  <canvas class="bits band" aria-hidden="true"></canvas>
   <header class="top wrap">
     <a class="brand" href="/it/">
       <picture>
@@ -78,7 +66,7 @@
   <main class="doc wrap">
     <article>
       <p class="crumb"><a href="/it/">BinaryBuilders</a> / <a href="/it/chi-siamo">Chi siamo</a></p>
-      <h1>Michele Sabatino</h1>
+      <h1 class="decode">Michele Sabatino</h1>
       <p class="lede">Ho fondato BinaryBuilders con Giuseppe Scappaticci. Lavoro nel software dal 2021.</p>
       <h2>Percorso</h2>
       <p>Ho iniziato nella cybersecurity, poi ho cambiato strada e ho cominciato a sviluppare in Java, lavorando per due aziende campane.</p>

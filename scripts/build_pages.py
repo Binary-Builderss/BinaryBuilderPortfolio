@@ -5,10 +5,8 @@ English lives at /, /services/<slug>, /about, /privacy and one page per founder;
 Each language also gets a 404.html, which Cloudflare serves for unknown paths.
 """
 import json
-import math
 import re
 import pathlib
-import random
 
 PUBLIC = pathlib.Path(__file__).resolve().parent.parent / "public"
 BASE = "https://binarybuilders.dev"
@@ -502,18 +500,6 @@ def services_list(lang, skip=None, cls="more-list"):
     return f'<ul class="{cls}">\n{items}\n        </ul>'
 
 
-def field(x, y, t=0.9):
-    # Same three sine waves as main.js, frozen at one moment.
-    return (math.sin(x * 0.11 + t) + math.sin(y * 0.17 - t * 0.8) + math.sin((x + y) * 0.07 + t * 0.5)) / 3
-
-
-def band():
-    """A frozen slice of the home page bit field as plain text: content pages get the texture with no JS."""
-    rnd = random.Random(7)  # fixed seed: regenerating the pages does not churn the diff
-    rows = ("".join(rnd.choice("01") if field(c, r) > 0.2 else " " for c in range(110)).rstrip() for r in range(14))
-    return '  <pre class="band" aria-hidden="true">' + "\n".join(rows) + "</pre>"
-
-
 JB = '  <link rel="preload" href="/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>'
 MARTIAN = '  <link rel="preload" href="/fonts/martian-mono.woff2" as="font" type="font/woff2" crossorigin media="(min-width: 768px)">'
 
@@ -543,9 +529,10 @@ def home(lang):
 def doc_page(lang, head_html, switch_href, content, main_class="doc"):
     """Shared shell of the reading pages: services, about, founders, privacy, 404."""
     return f"""{head_html}
+  <script type="module" src="/main.js"></script>
 </head>
 <body>
-{band()}
+  <canvas class="bits band" aria-hidden="true"></canvas>
 {header(lang, switch_href)}
 
   <main class="{main_class} wrap">
@@ -585,7 +572,7 @@ def service(lang, s):
         ],
     }
     content = f"""      <p class="crumb"><a href="{ui["home"]}">BinaryBuilders</a> / {ui["nav"]}</p>
-      <h1>{p["h1"]}</h1>
+      <h1 class="decode">{p["h1"]}</h1>
       <p class="lede">{p["lede"]}</p>
 {as_blocks(p["body"])}
       <nav class="more" aria-labelledby="more-title">
@@ -604,7 +591,7 @@ def service(lang, s):
 def privacy(lang):
     ui, p = UI[lang], PRIVACY[lang]
     alternates = {l: UI[l]["privacy"] for l in UI}
-    content = f"""      <h1>{p["h1"]}</h1>
+    content = f"""      <h1 class="decode">{p["h1"]}</h1>
       <p class="lede">{p["lede"]}</p>
 {p["body"]}"""
     return doc_page(lang, head(lang, p["title"], p["desc"], ui["privacy"], [JB, MARTIAN], None, alternates),
@@ -616,7 +603,7 @@ def about(lang):
     alternates = {l: UI[l]["about"] for l in UI}
     ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": BASE + ui["about"], "inLanguage": lang,
           "mainEntity": {"@id": f"{BASE}/#org"}}
-    content = f"""      <h1>{p["h1"]}</h1>
+    content = f"""      <h1 class="decode">{p["h1"]}</h1>
       <p class="lede">{p["lede"]}</p>
 {p["body"]}
       <section class="contact" aria-labelledby="contact-title">
@@ -637,7 +624,7 @@ def person(lang, p):
           "mainEntity": {"@type": "Person", "@id": person_id(p), "name": p["name"], "jobTitle": "Software engineer",
                          "worksFor": {"@id": f"{BASE}/#org"}, "sameAs": [p["github"]], "knowsLanguage": ["it", "en"]}}
     content = f"""      <p class="crumb"><a href="{ui["home"]}">BinaryBuilders</a> / <a href="{ui["about"]}">{ui["about_label"]}</a></p>
-      <h1>{p["name"]}</h1>
+      <h1 class="decode">{p["name"]}</h1>
       <p class="lede">{t["lede"]}</p>
       <h2>{pu["background"]}</h2>
       <p>{t["background"]}</p>
@@ -661,7 +648,7 @@ def person(lang, p):
 
 def not_found(lang):
     ui = UI[lang]
-    content = f"""      <h1>{ui["nf_h1"]}</h1>
+    content = f"""      <h1 class="decode">{ui["nf_h1"]}</h1>
       <p class="lede">{ui["nf_p"]}</p>
       {services_list(lang)}
       <div class="ctas">
