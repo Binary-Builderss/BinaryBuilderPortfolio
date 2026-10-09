@@ -116,8 +116,9 @@ p, li { text-wrap: pretty; } /* no single word left alone on the last line */
   display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: .75rem 2rem;
   padding-block: 1.25rem; font-size: .8rem; line-height: 1.5;
 }
-.footer > p:last-child { text-align: right; }
-@media (max-width: 767px) { .footer > p:last-child { text-align: left; } }
+.footer .meta { text-align: right; }
+.footer .meta .links { justify-content: flex-end; }
+@media (max-width: 767px) { .footer .meta { text-align: left; } .footer .meta .links { justify-content: flex-start; } }
 .footer .links { display: flex; flex-wrap: wrap; gap: 0 1.5ch; }
 .footer a { color: var(--text); display: inline-block; padding-block: .3rem; } /* taller tap target, same look */
 
@@ -130,6 +131,7 @@ p, li { text-wrap: pretty; } /* no single word left alone on the last line */
   .doc h1 { font-family: "Martian Mono", "Martian Fallback", monospace; font-stretch: 112.5%; letter-spacing: -0.05em; font-size: clamp(2rem, 3.6vw, 3rem); line-height: 1.1; }
 }
 .doc .lede { color: var(--text); font-size: 1.05rem; margin-top: 1.25rem; }
+.doc h3 { font-size: .95rem; font-weight: 600; margin-top: 1.5rem; }
 .doc h2 { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; margin-top: 2.75rem; }
 .doc p, .doc ul { margin-top: .9rem; }
 .doc ul { padding-left: 1.2rem; color: var(--muted); }

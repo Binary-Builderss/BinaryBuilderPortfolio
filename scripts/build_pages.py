@@ -1,7 +1,7 @@
 """Writes every HTML page and the sitemap in public/, in English and Italian.
 
 The site has no build step: run `python3 scripts/build_pages.py` after editing copy here, then commit the output.
-English lives at /, /services/<slug> and /privacy; Italian at /it/, /it/servizi/<slug> and /it/privacy.
+English lives at /, /services/<slug>, /about and /privacy; Italian at /it/, /it/servizi/<slug>, /it/chi-siamo and /it/privacy.
 Each language also gets a 404.html, which Cloudflare serves for unknown paths.
 """
 import json
@@ -25,7 +25,7 @@ UI = {
         "links": ["Salesforce", "Java and APIs", "Web apps", "Maintenance"],
         "contact_h": "Tell us about your project",
         "contact_p": "Send us the scope and the systems involved. We will tell you honestly whether we are the right fit.",
-        "more": "Other services", "privacy": "/privacy",
+        "more": "Other services", "privacy": "/privacy", "about": "/about", "about_label": "About",
         "nf_title": "Page not found | BinaryBuilders", "nf_h1": "Page not found",
         "nf_p": "This address does not exist, or the page has moved. Everything we do is listed below.",
         "nf_home": "Go to the home page",
@@ -39,7 +39,7 @@ UI = {
         "links": ["Salesforce", "Java e API", "Web app", "Manutenzione"],
         "contact_h": "Raccontateci il vostro progetto",
         "contact_p": "Inviateci il perimetro e i sistemi coinvolti. Vi diremo onestamente se siamo le persone giuste.",
-        "more": "Altri servizi", "privacy": "/it/privacy",
+        "more": "Altri servizi", "privacy": "/it/privacy", "about": "/it/chi-siamo", "about_label": "Chi siamo",
         "nf_title": "Pagina non trovata | BinaryBuilders", "nf_h1": "Pagina non trovata",
         "nf_p": "Questo indirizzo non esiste, oppure la pagina è stata spostata. Qui sotto trovate tutto quello che facciamo.",
         "nf_home": "Torna alla home",
@@ -149,11 +149,15 @@ SERVICES = [
             "lede": "We build reliable backend services and connect applications, external APIs, databases and enterprise systems, so data moves where it needs to without manual work.",
             "body": """
       <h2>What we build</h2>
+      <h3>Services and APIs</h3>
       <ul>
         <li><strong>REST APIs</strong> designed around clear contracts and versioning.</li>
         <li><strong>Java and Spring Boot services</strong>, from single services to microservices and distributed systems.</li>
         <li><strong>Go and C# services</strong> when they fit the project or the existing stack better.</li>
         <li><strong>Business logic and database integration</strong> for the rules your applications depend on.</li>
+      </ul>
+      <h3>Integrations and automation</h3>
+      <ul>
         <li><strong>Third-party and enterprise integrations</strong>, including connections between Salesforce and other platforms.</li>
         <li><strong>Process automation</strong> that replaces repetitive manual steps between systems.</li>
       </ul>
@@ -171,11 +175,15 @@ SERVICES = [
             "lede": "Costruiamo servizi backend affidabili e colleghiamo applicazioni, API esterne, database e sistemi aziendali, così i dati arrivano dove servono senza lavoro manuale.",
             "body": """
       <h2>Cosa sviluppiamo</h2>
+      <h3>Servizi e API</h3>
       <ul>
         <li><strong>REST API</strong> progettate attorno a contratti chiari e al versioning.</li>
         <li><strong>Servizi Java e Spring Boot</strong>, dal singolo servizio ai microservizi e ai sistemi distribuiti.</li>
         <li><strong>Servizi in Go e C#</strong> quando si adattano meglio al progetto o allo stack esistente.</li>
         <li><strong>Logica di business e integrazione con i database</strong> per le regole da cui dipendono le vostre applicazioni.</li>
+      </ul>
+      <h3>Integrazioni e automazione</h3>
+      <ul>
         <li><strong>Integrazioni con terze parti e sistemi aziendali</strong>, compresi i collegamenti tra Salesforce e altre piattaforme.</li>
         <li><strong>Automazione dei processi</strong> che sostituisce i passaggi manuali ripetitivi tra sistemi.</li>
       </ul>
@@ -275,6 +283,56 @@ SERVICES = [
     },
 ]
 
+# Only facts from the company context: no clients, numbers or claims it does not state.
+ABOUT = {
+    "en": {
+        "title": "About BinaryBuilders | Independent software team",
+        "desc": "BinaryBuilders is an independent two-developer team combining enterprise engineering, modern web development, systems integration and business automation.",
+        "h1": "About BinaryBuilders",
+        "lede": "We are an independent software engineering team founded by two developers with professional experience in enterprise software, backend systems, frontend applications and business process automation.",
+        "body": """
+      <h2>Why we started</h2>
+      <p>We created BinaryBuilders with one objective: help organizations solve real technical problems with reliable, maintainable and scalable software. We favour practical engineering, clear requirements and long-term maintainability over unnecessary complexity.</p>
+      <h2>What we combine</h2>
+      <p>Enterprise engineering, modern web development, systems integration and business automation. In practice that means Java and Spring Boot backends, React and Next.js applications, Salesforce development, and the integrations that connect them.</p>
+      <h2>How we work</h2>
+      <ul>
+        <li><strong>Problem first.</strong> We understand the problem before proposing a solution.</li>
+        <li><strong>Realistic scope.</strong> We agree on requirements and deliverables we can actually meet.</li>
+        <li><strong>Maintainable code.</strong> Clean, tested and easy for your team to take over.</li>
+        <li><strong>Reuse before rebuild.</strong> If an existing system does the job, we connect to it.</li>
+        <li><strong>Clear communication</strong> throughout development, on new projects and existing codebases alike.</li>
+      </ul>
+      <h2>A small team, on purpose</h2>
+      <p>We are two engineers, not a large consultancy. You talk directly with the people writing the code, ownership is clear and delivery stays focused. We work best on clearly scoped projects, technical integrations, targeted development tasks and ongoing maintenance, either directly with companies or as subcontractors for agencies and consulting partners.</p>
+      <h2>The team</h2>
+      <p>Giuseppe Scappaticci and Michele Sabatino.</p>""",
+    },
+    "it": {
+        "title": "Chi siamo | BinaryBuilders",
+        "desc": "BinaryBuilders è un team indipendente di due sviluppatori che unisce ingegneria enterprise, sviluppo web moderno, integrazione di sistemi e automazione.",
+        "h1": "Chi siamo",
+        "lede": "Siamo un team indipendente di ingegneria del software, fondato da due sviluppatori con esperienza professionale in software enterprise, sistemi backend, applicazioni frontend e automazione dei processi aziendali.",
+        "body": """
+      <h2>Perché abbiamo iniziato</h2>
+      <p>Abbiamo creato BinaryBuilders con un obiettivo: aiutare le organizzazioni a risolvere problemi tecnici reali con software affidabile, manutenibile e scalabile. Preferiamo l'ingegneria pratica, requisiti chiari e la manutenibilità nel tempo alla complessità inutile.</p>
+      <h2>Cosa uniamo</h2>
+      <p>Ingegneria enterprise, sviluppo web moderno, integrazione di sistemi e automazione dei processi. In pratica: backend Java e Spring Boot, applicazioni React e Next.js, sviluppo Salesforce e le integrazioni che li collegano.</p>
+      <h2>Come lavoriamo</h2>
+      <ul>
+        <li><strong>Prima il problema.</strong> Capiamo il problema prima di proporre una soluzione.</li>
+        <li><strong>Perimetro realistico.</strong> Concordiamo requisiti e deliverable che possiamo davvero rispettare.</li>
+        <li><strong>Codice manutenibile.</strong> Pulito, testato e facile da prendere in carico per il vostro team.</li>
+        <li><strong>Riusare prima di ricostruire.</strong> Se un sistema esistente fa già il lavoro, ci colleghiamo a quello.</li>
+        <li><strong>Comunicazione chiara</strong> per tutto lo sviluppo, su progetti nuovi e su codebase esistenti.</li>
+      </ul>
+      <h2>Un team piccolo, per scelta</h2>
+      <p>Siamo due ingegneri, non una grande società di consulenza. Parlate direttamente con chi scrive il codice, le responsabilità sono chiare e la consegna resta concentrata. Lavoriamo al meglio su progetti con un perimetro chiaro, integrazioni tecniche, attività di sviluppo mirate e manutenzione continuativa, sia direttamente con le aziende sia in subappalto per agenzie e partner di consulenza.</p>
+      <h2>Il team</h2>
+      <p>Giuseppe Scappaticci e Michele Sabatino.</p>""",
+    },
+}
+
 ORG_LD = {
     "@context": "https://schema.org",
     "@graph": [
@@ -370,7 +428,10 @@ def footer(lang):
       <p>{ui["studio"]}</p>
       <p class="links">{links}</p>
     </nav>
-    <p>binarybuilders.dev &middot; <a href="{ui["privacy"]}">Privacy</a><br>&copy; 2026 BinaryBuilders</p>
+    <div class="meta">
+      <p class="links"><a href="{ui["about"]}">{ui["about_label"]}</a> <a href="{ui["privacy"]}">Privacy</a></p>
+      <p>&copy; 2026 BinaryBuilders</p>
+    </div>
   </footer>"""
 
 
@@ -480,6 +541,23 @@ def privacy(lang):
                     alternates[ui["other"]], content)
 
 
+def about(lang):
+    ui, p = UI[lang], ABOUT[lang]
+    alternates = {l: UI[l]["about"] for l in UI}
+    ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": BASE + ui["about"], "inLanguage": lang,
+          "mainEntity": {"@id": f"{BASE}/#org"}}
+    content = f"""      <h1>{p["h1"]}</h1>
+      <p class="lede">{p["lede"]}</p>
+{p["body"]}
+      <section class="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">{ui["contact_h"]}</h2>
+        <p>{ui["contact_p"]}</p>
+        {ctas(lang)}
+      </section>"""
+    return doc_page(lang, head(lang, p["title"], p["desc"], ui["about"], [JB, MARTIAN], None, alternates, ld),
+                    alternates[ui["other"]], content)
+
+
 def not_found(lang):
     ui = UI[lang]
     content = f"""      <h1>{ui["nf_h1"]}</h1>
@@ -507,6 +585,7 @@ for lang in UI:
         p = s[lang]
         assert len(p["title"]) <= 60 and len(p["desc"]) <= 160, (p["slug"], len(p["title"]), len(p["desc"]))
         urls.append(write(ui["services"] + p["slug"], service(lang, s)))
+    urls.append(write(ui["about"], about(lang)))
     urls.append(write(ui["privacy"], privacy(lang)))
     write(ui["home"] + "404", not_found(lang))  # served by Cloudflare for unknown paths, not listed in the sitemap
 
