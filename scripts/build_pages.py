@@ -377,10 +377,10 @@ PEOPLE = [
 
 PEOPLE_UI = {
     "en": {"background": "Background", "work": "At BinaryBuilders", "work_p": "{other} and I both work across every service we offer:",
-           "langs": "Languages and location", "langs_p": "Italian (native) and English (C1). I am from the Agro Nolano area, near Naples, Italy.",
+           "langs": "Languages and location", "langs_p": "Italian (native) and English (C1). I am from Naples, Italy.",
            "links": "Profiles", "team": "The team"},
     "it": {"background": "Percorso", "work": "In BinaryBuilders", "work_p": "Io e {other} lavoriamo entrambi su tutti i servizi che offriamo:",
-           "langs": "Lingue e provenienza", "langs_p": "Italiano (madrelingua) e inglese (C1). Sono dell'Agro Nolano, vicino a Napoli.",
+           "langs": "Lingue e provenienza", "langs_p": "Italiano (madrelingua) e inglese (C1). Sono di Napoli.",
            "links": "Profili", "team": "Il team"},
 }
 
