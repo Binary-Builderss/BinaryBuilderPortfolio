@@ -52,6 +52,8 @@ body {
 a { color: inherit; text-underline-offset: 3px; }
 p { color: var(--muted); }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+h1, h2 { text-wrap: balance; }
+p, li { text-wrap: pretty; } /* no single word left alone on the last line */
 
 .wrap { width: min(100% - 2rem, 1320px); margin-inline: auto; }
 
@@ -107,7 +109,7 @@ p { color: var(--muted); }
 .decode .ch[data-g] { color: transparent; }
 .decode .ch[data-g]::after {
   content: attr(data-g); content: attr(data-g) / ""; position: absolute; inset: 0;
-  display: grid; place-items: center; color: var(--accent);
+  display: grid; place-items: center; color: var(--muted);
 }
 
 .footer {
@@ -117,21 +119,37 @@ p { color: var(--muted); }
 .footer > p:last-child { text-align: right; }
 @media (max-width: 767px) { .footer > p:last-child { text-align: left; } }
 .footer .links { display: flex; flex-wrap: wrap; gap: 0 1.5ch; }
-.footer a { color: var(--text); }
+.footer a { color: var(--text); display: inline-block; padding-block: .3rem; } /* taller tap target, same look */
 
-/* Content pages (services): readable column, same type and tokens. */
-.doc { width: min(100% - 2rem, 72ch); margin-inline: auto; padding-block: clamp(2rem, 6vh, 4rem) 4rem; }
+/* Content pages (services, privacy, 404): same left edge as the logo, readable column, same type and tokens. */
+.doc { padding-block: clamp(2rem, 6vh, 4rem) 4rem; }
+.doc article { max-width: 72ch; }
 .doc .crumb { font-size: .8rem; margin-bottom: 1.5rem; }
 .doc h1 { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; }
+@media (min-width: 768px) {
+  .doc h1 { font-family: "Martian Mono", "Martian Fallback", monospace; font-stretch: 112.5%; letter-spacing: -0.05em; font-size: clamp(2rem, 3.6vw, 3rem); line-height: 1.1; }
+}
 .doc .lede { color: var(--text); font-size: 1.05rem; margin-top: 1.25rem; }
 .doc h2 { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; margin-top: 2.75rem; }
 .doc p, .doc ul { margin-top: .9rem; }
 .doc ul { padding-left: 1.2rem; color: var(--muted); }
 .doc li + li { margin-top: .35rem; }
-.doc li strong { color: var(--text); font-weight: 600; }
+.doc li strong, .doc code { color: var(--text); font-weight: 600; font-family: inherit; }
+.doc .more-list { list-style: none; padding-left: 0; }
+.doc .more-list a { color: var(--text); display: inline-block; padding-block: .25rem; }
+.doc .more-list a::after { content: " \2192"; color: var(--muted); }
 .doc .contact { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--line); }
 .doc .contact h2 { margin-top: 0; }
 .doc .ctas { animation: none; }
+.doc .updated { font-size: .8rem; margin-top: 2.5rem; }
+
+/* Frozen slice of the bit field behind the top of content pages (generated text, 18px cells like the canvas). */
+.band {
+  position: absolute; inset: 0 0 auto 0; z-index: -1; height: 252px; overflow: hidden; margin: 0;
+  font: 500 12px/18px "JetBrains Mono", monospace; letter-spacing: 10.8px; padding-left: 5px;
+  color: var(--muted); opacity: .18; user-select: none; pointer-events: none;
+  mask-image: linear-gradient(to bottom, #000, transparent 75%);
+}
 
 /* CTAs arrive after the headline has decoded. */
 @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }

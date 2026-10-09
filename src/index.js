@@ -6,6 +6,8 @@ const YEAR = 60 * 60 * 24 * 365;
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    // Paths with no matching file also reach the Worker: let the assets layer answer them with the 404 page.
+    if (url.pathname !== "/") return env.ASSETS.fetch(request);
     const chosen = url.searchParams.get("lang");
     if (chosen === "en" || chosen === "it") {
       return new Response(null, {

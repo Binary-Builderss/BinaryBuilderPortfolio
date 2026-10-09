@@ -1,10 +1,13 @@
 """Writes every HTML page and the sitemap in public/, in English and Italian.
 
 The site has no build step: run `python3 scripts/build_pages.py` after editing copy here, then commit the output.
-English lives at / and /services/<slug>, Italian at /it/ and /it/servizi/<slug>.
+English lives at /, /services/<slug> and /privacy; Italian at /it/, /it/servizi/<slug> and /it/privacy.
+Each language also gets a 404.html, which Cloudflare serves for unknown paths.
 """
 import json
+import math
 import pathlib
+import random
 
 PUBLIC = pathlib.Path(__file__).resolve().parent.parent / "public"
 BASE = "https://binarybuilders.dev"
@@ -22,6 +25,10 @@ UI = {
         "links": ["Salesforce", "Java and APIs", "Web apps", "Maintenance"],
         "contact_h": "Tell us about your project",
         "contact_p": "Send us the scope and the systems involved. We will tell you honestly whether we are the right fit.",
+        "more": "Other services", "privacy": "/privacy",
+        "nf_title": "Page not found | BinaryBuilders", "nf_h1": "Page not found",
+        "nf_p": "This address does not exist, or the page has moved. Everything we do is listed below.",
+        "nf_home": "Go to the home page",
     },
     "it": {
         "home": "/it/", "services": "/it/servizi/", "locale": "it_IT", "other": "en", "switch": "English",
@@ -32,6 +39,58 @@ UI = {
         "links": ["Salesforce", "Java e API", "Web app", "Manutenzione"],
         "contact_h": "Raccontateci il vostro progetto",
         "contact_p": "Inviateci il perimetro e i sistemi coinvolti. Vi diremo onestamente se siamo le persone giuste.",
+        "more": "Altri servizi", "privacy": "/it/privacy",
+        "nf_title": "Pagina non trovata | BinaryBuilders", "nf_h1": "Pagina non trovata",
+        "nf_p": "Questo indirizzo non esiste, oppure la pagina è stata spostata. Qui sotto trovate tutto quello che facciamo.",
+        "nf_home": "Torna alla home",
+    },
+}
+
+# Plain, factual policy: the site has no analytics, no tracking cookies and no forms (checked 2026-10-09).
+PRIVACY = {
+    "en": {
+        "title": "Privacy Policy | BinaryBuilders",
+        "desc": "How binarybuilders.dev handles personal data: no analytics and no tracking cookies, only email and call bookings.",
+        "h1": "Privacy policy",
+        "lede": "This site does not use analytics, advertising or tracking cookies. This page explains the little personal data involved when you visit it, write to us or book a call.",
+        "body": f"""
+      <h2>Who is responsible</h2>
+      <p>BinaryBuilders, the software engineering team of Giuseppe Scappaticci and Michele Sabatino, is the data controller. You can reach us at <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
+      <h2>Visiting the site</h2>
+      <p>The site is hosted on Cloudflare. To deliver pages and protect the site from abuse, Cloudflare processes technical data such as your IP address, browser type and the pages requested. We do not use this data to identify you. Fonts and all other files are served from our own domain, so browsing the site loads nothing from third parties.</p>
+      <h2>Cookies</h2>
+      <p>The site sets one technical cookie, <code>lang</code>, and only if you switch language. It remembers your choice for one year and contains nothing else. It needs no consent, and no other cookies are set.</p>
+      <h2>Writing to us</h2>
+      <p>Messages sent to {EMAIL} are forwarded by Cloudflare Email Routing to our mailbox. We use your address and your message only to reply and, if we work together, to run the project. We keep the correspondence for as long as that requires, or as long as the law requires.</p>
+      <h2>Booking a call</h2>
+      <p>The "Book a call" button opens a booking page run by Google Calendar. The name, email and notes you enter there are processed by Google and shared with us to schedule the call and send you the video link. Google's own <a href="https://policies.google.com/privacy">privacy policy</a> applies to that page.</p>
+      <h2>Legal basis and transfers</h2>
+      <p>We process this data to answer requests you start (Article 6(1)(b) GDPR) and for our legitimate interest in running a secure website (Article 6(1)(f) GDPR). Cloudflare and Google are based in the United States and transfer data under the EU-U.S. Data Privacy Framework.</p>
+      <h2>Your rights</h2>
+      <p>You can ask us to access, correct or delete your data, to restrict or object to its processing, or to receive it in a portable format, by writing to {EMAIL}. You can also lodge a complaint with your data protection authority: in Italy, the Garante per la protezione dei dati personali.</p>
+      <p class="updated">Last updated: 9 October 2026.</p>""",
+    },
+    "it": {
+        "title": "Privacy | BinaryBuilders",
+        "desc": "Come binarybuilders.dev tratta i dati personali: nessuna statistica e nessun cookie di tracciamento, solo email e prenotazioni di call.",
+        "h1": "Informativa privacy",
+        "lede": "Questo sito non usa statistiche, pubblicità o cookie di tracciamento. Questa pagina spiega i pochi dati personali coinvolti quando lo visitate, ci scrivete o prenotate una call.",
+        "body": f"""
+      <h2>Chi è il titolare</h2>
+      <p>Il titolare del trattamento è BinaryBuilders, il team di ingegneria del software di Giuseppe Scappaticci e Michele Sabatino. Potete contattarci a <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
+      <h2>Navigazione</h2>
+      <p>Il sito è ospitato su Cloudflare. Per servire le pagine e proteggere il sito dagli abusi, Cloudflare tratta dati tecnici come l'indirizzo IP, il tipo di browser e le pagine richieste. Non usiamo questi dati per identificarvi. I font e tutti gli altri file sono serviti dal nostro dominio, quindi navigando non viene caricato nulla da terze parti.</p>
+      <h2>Cookie</h2>
+      <p>Il sito imposta un solo cookie tecnico, <code>lang</code>, e solo se cambiate lingua. Ricorda la scelta per un anno e non contiene altro. Non richiede consenso e non vengono impostati altri cookie.</p>
+      <h2>Se ci scrivete</h2>
+      <p>I messaggi inviati a {EMAIL} vengono inoltrati da Cloudflare Email Routing alla nostra casella. Usiamo il vostro indirizzo e il messaggio solo per rispondere e, se lavoriamo insieme, per gestire il progetto. Conserviamo la corrispondenza per il tempo necessario a questo scopo o per quello richiesto dalla legge.</p>
+      <h2>Prenotazione di una call</h2>
+      <p>Il pulsante "Prenota una call" apre una pagina di prenotazione gestita da Google Calendar. Il nome, l'email e le note che inserite sono trattati da Google e condivisi con noi per fissare la call e inviarvi il link della videochiamata. Per quella pagina vale l'<a href="https://policies.google.com/privacy?hl=it">informativa privacy di Google</a>.</p>
+      <h2>Base giuridica e trasferimenti</h2>
+      <p>Trattiamo questi dati per rispondere a richieste che avviate voi (art. 6, par. 1, lett. b GDPR) e per il nostro legittimo interesse a gestire un sito sicuro (art. 6, par. 1, lett. f GDPR). Cloudflare e Google hanno sede negli Stati Uniti e trasferiscono i dati nell'ambito dell'EU-U.S. Data Privacy Framework.</p>
+      <h2>I vostri diritti</h2>
+      <p>Potete chiederci l'accesso, la rettifica o la cancellazione dei vostri dati, la limitazione o l'opposizione al trattamento, o di riceverli in un formato portabile, scrivendo a {EMAIL}. Potete anche presentare reclamo al Garante per la protezione dei dati personali.</p>
+      <p class="updated">Ultimo aggiornamento: 9 ottobre 2026.</p>""",
     },
 }
 
@@ -245,10 +304,29 @@ ORG_LD = {
 }
 
 
-def head(lang, title, desc, og_desc, path, alternates, ld, preloads):
-    """alternates: {"en": path, "it": path}; the English page doubles as x-default."""
-    hreflang = "\n".join(f'  <link rel="alternate" hreflang="{l}" href="{BASE}{p}">' for l, p in alternates.items())
-    fonts = "\n".join(preloads)
+def head(lang, title, desc, path, preloads, og_desc=None, alternates=None, ld=None, index=True):
+    """alternates: {"en": path, "it": path}; the English page doubles as x-default. index=False for the 404 pages."""
+    meta = []
+    if index:
+        meta.append(f'  <link rel="canonical" href="{BASE}{path}">')
+        meta += [f'  <link rel="alternate" hreflang="{l}" href="{BASE}{p}">' for l, p in alternates.items()]
+        meta.append(f'  <link rel="alternate" hreflang="x-default" href="{BASE}{alternates["en"]}">')
+    else:
+        meta.append('  <meta name="robots" content="noindex">')
+    if ld:
+        meta.append(f'  <script type="application/ld+json">\n{json.dumps(ld, indent=2, ensure_ascii=False)}\n  </script>')
+    if index:
+        meta.append(f"""  <meta property="og:site_name" content="BinaryBuilders">
+  <meta property="og:title" content="{title}">
+  <meta property="og:description" content="{og_desc or desc}">
+  <meta property="og:url" content="{BASE}{path}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="{UI[lang]["locale"]}">
+  <meta property="og:image" content="{BASE}/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">""")
+    nl = "\n"
     return f"""<!doctype html>
 <html lang="{lang}">
 <head>
@@ -257,25 +335,10 @@ def head(lang, title, desc, og_desc, path, alternates, ld, preloads):
   <title>{title}</title>
   <meta name="description" content="{desc}">
   <meta name="color-scheme" content="light dark">
-  <link rel="canonical" href="{BASE}{path}">
-{hreflang}
-  <link rel="alternate" hreflang="x-default" href="{BASE}{alternates["en"]}">
-  <script type="application/ld+json">
-{json.dumps(ld, indent=2, ensure_ascii=False)}
-  </script>
-  <meta property="og:site_name" content="BinaryBuilders">
-  <meta property="og:title" content="{title}">
-  <meta property="og:description" content="{og_desc}">
-  <meta property="og:url" content="{BASE}{path}">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="{UI[lang]["locale"]}">
-  <meta property="og:image" content="{BASE}/assets/og.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
+{nl.join(meta)}
   <link rel="icon" type="image/png" href="/assets/favicon.png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-{fonts}
+{nl.join(preloads)}
   <link rel="stylesheet" href="/styles.css">"""
 
 
@@ -307,8 +370,26 @@ def footer(lang):
       <p>{ui["studio"]}</p>
       <p class="links">{links}</p>
     </nav>
-    <p>binarybuilders.dev<br>&copy; 2026 BinaryBuilders</p>
+    <p>binarybuilders.dev &middot; <a href="{ui["privacy"]}">Privacy</a><br>&copy; 2026 BinaryBuilders</p>
   </footer>"""
+
+
+def services_list(lang, skip=None):
+    items = "\n".join(f'          <li><a href="{UI[lang]["services"]}{s[lang]["slug"]}">{s[lang]["h1"]}</a></li>'
+                      for s in SERVICES if s is not skip)
+    return f'<ul class="more-list">\n{items}\n        </ul>'
+
+
+def field(x, y, t=0.9):
+    # Same three sine waves as main.js, frozen at one moment.
+    return (math.sin(x * 0.11 + t) + math.sin(y * 0.17 - t * 0.8) + math.sin((x + y) * 0.07 + t * 0.5)) / 3
+
+
+def band():
+    """A frozen slice of the home page bit field as plain text: content pages get the texture with no JS."""
+    rnd = random.Random(7)  # fixed seed: regenerating the pages does not churn the diff
+    rows = ("".join(rnd.choice("01") if field(c, r) > 0.2 else " " for c in range(110)).rstrip() for r in range(14))
+    return '  <pre class="band" aria-hidden="true">' + "\n".join(rows) + "</pre>"
 
 
 JB = '  <link rel="preload" href="/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>'
@@ -318,7 +399,7 @@ MARTIAN = '  <link rel="preload" href="/fonts/martian-mono.woff2" as="font" type
 def home(lang):
     ui = UI[lang]
     # On the home page the switch goes through the Worker (?lang=), which remembers the choice in a cookie.
-    return f"""{head(lang, ui["home_title"], ui["home_desc"], ui["home_og"], ui["home"], {"en": "/", "it": "/it/"}, ORG_LD, [JB, MARTIAN])}
+    return f"""{head(lang, ui["home_title"], ui["home_desc"], ui["home"], [JB, MARTIAN], ui["home_og"], {"en": "/", "it": "/it/"}, ORG_LD)}
   <script type="module" src="/main.js"></script>
 </head>
 <body>
@@ -329,6 +410,26 @@ def home(lang):
   <main class="hero wrap">
     <h1 class="decode">Build. Automate. Scale.</h1>
     {ctas(lang)}
+  </main>
+
+{footer(lang)}
+</body>
+</html>
+"""
+
+
+def doc_page(lang, head_html, switch_href, content):
+    """Shared shell of the reading pages: services, privacy, 404."""
+    return f"""{head_html}
+</head>
+<body>
+{band()}
+{header(lang, switch_href)}
+
+  <main class="doc wrap">
+    <article>
+{content}
+    </article>
   </main>
 
 {footer(lang)}
@@ -352,29 +453,43 @@ def service(lang, s):
                 {"@type": "ListItem", "position": 2, "name": p["h1"], "item": BASE + path}]},
         ],
     }
-    return f"""{head(lang, p["title"], p["desc"], p["desc"], path, alternates, ld, [JB])}
-</head>
-<body>
-{header(lang, alternates[ui["other"]])}
-
-  <main class="doc">
-    <article>
-      <p class="crumb"><a href="{ui["home"]}">BinaryBuilders</a> / {ui["nav"]}</p>
+    content = f"""      <p class="crumb"><a href="{ui["home"]}">BinaryBuilders</a> / {ui["nav"]}</p>
       <h1>{p["h1"]}</h1>
       <p class="lede">{p["lede"]}</p>
 {p["body"]}
+      <nav class="more" aria-labelledby="more-title">
+        <h2 id="more-title">{ui["more"]}</h2>
+        {services_list(lang, s)}
+      </nav>
       <section class="contact" aria-labelledby="contact-title">
         <h2 id="contact-title">{ui["contact_h"]}</h2>
         <p>{ui["contact_p"]}</p>
         {ctas(lang)}
-      </section>
-    </article>
-  </main>
+      </section>"""
+    return doc_page(lang, head(lang, p["title"], p["desc"], path, [JB, MARTIAN], None, alternates, ld),
+                    alternates[ui["other"]], content)
 
-{footer(lang)}
-</body>
-</html>
-"""
+
+def privacy(lang):
+    ui, p = UI[lang], PRIVACY[lang]
+    alternates = {l: UI[l]["privacy"] for l in UI}
+    content = f"""      <h1>{p["h1"]}</h1>
+      <p class="lede">{p["lede"]}</p>
+{p["body"]}"""
+    return doc_page(lang, head(lang, p["title"], p["desc"], ui["privacy"], [JB, MARTIAN], None, alternates),
+                    alternates[ui["other"]], content)
+
+
+def not_found(lang):
+    ui = UI[lang]
+    content = f"""      <h1>{ui["nf_h1"]}</h1>
+      <p class="lede">{ui["nf_p"]}</p>
+      {services_list(lang)}
+      <div class="ctas">
+        <a class="btn btn-ghost btn-lg" href="{ui["home"]}">{ui["nf_home"]}</a>
+      </div>"""
+    return doc_page(lang, head(lang, ui["nf_title"], ui["nf_p"], None, [JB, MARTIAN], index=False),
+                    "/?lang=" + ui["other"], content)
 
 
 def write(path, html):
@@ -386,11 +501,14 @@ def write(path, html):
 
 urls = []
 for lang in UI:
-    urls.append(write(UI[lang]["home"], home(lang)))
+    ui = UI[lang]
+    urls.append(write(ui["home"], home(lang)))
     for s in SERVICES:
         p = s[lang]
         assert len(p["title"]) <= 60 and len(p["desc"]) <= 160, (p["slug"], len(p["title"]), len(p["desc"]))
-        urls.append(write(UI[lang]["services"] + p["slug"], service(lang, s)))
+        urls.append(write(ui["services"] + p["slug"], service(lang, s)))
+    urls.append(write(ui["privacy"], privacy(lang)))
+    write(ui["home"] + "404", not_found(lang))  # served by Cloudflare for unknown paths, not listed in the sitemap
 
 (PUBLIC / "sitemap.xml").write_text(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'

@@ -3,5 +3,6 @@
   "compatibility_date": "2026-09-01",
   "main": "src/index.js",
   // The Worker only handles "/" (language redirect); everything else is a static file from public/.
-  "assets": { "directory": "./public", "binding": "ASSETS", "run_worker_first": ["/"] }
+  // Unknown paths get the nearest 404.html (public/404.html or public/it/404.html).
+  "assets": { "directory": "./public", "binding": "ASSETS", "run_worker_first": ["/"], "not_found_handling": "404-page" }
 }

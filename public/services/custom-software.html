@@ -62,9 +62,24 @@
   <link rel="icon" type="image/png" href="/assets/favicon.png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="preload" href="/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/martian-mono.woff2" as="font" type="font/woff2" crossorigin media="(min-width: 768px)">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+  <pre class="band" aria-hidden="true"> 10100010000110001                                                                                           0
+0001000011001000100                                                                                         00
+11111110000111110010                                                                                      1011
+001111100110011111011                                                                                    00100
+1001110011101111100000                                                                                 0001011
+00111001111101100001001                                                                              000001000
+101111001111100011100010                                                                            0101101010
+001001100111011110000101                                      01011001010110                     1110000001011
+0000001000101011100111000                                   1000001001100001001001             101110101010111
+0010010010101001100011110                                 1101011101110000011001011101101001010010001010111000
+0010001101101101000010101                                11100100110000110001101010011011110010100110110000100
+1010110001110100100000001                               011000110100011010001110110000111001011001111110010101
+1011100000110101011100011                              1101111010111000111011011101001001110110100011011000111
+1111101110000010111100000                             10101100111011101110001011111000111001110000001000000101</pre>
   <header class="top wrap">
     <a class="brand" href="/">
       <picture>
@@ -75,7 +90,7 @@
     <a class="lang" href="/it/servizi/software-su-misura" hreflang="it" lang="it">Italiano</a>
   </header>
 
-  <main class="doc">
+  <main class="doc wrap">
     <article>
       <p class="crumb"><a href="/">BinaryBuilders</a> / Services</p>
       <h1>Custom software and web applications</h1>
@@ -93,6 +108,14 @@
       <p>Startups that need technical support or an MVP, small and medium businesses that need software shaped around their processes, and digital agencies that need dependable external development.</p>
       <h2>How we work</h2>
       <p>We start by understanding the problem, then agree on a clear scope and deliverables. We favour practical, maintainable solutions over unnecessary complexity, and keep you updated throughout development.</p>
+      <nav class="more" aria-labelledby="more-title">
+        <h2 id="more-title">Other services</h2>
+        <ul class="more-list">
+          <li><a href="/services/salesforce-development">Salesforce development and automation</a></li>
+          <li><a href="/services/backend-api-integration">Backend development and API integrations</a></li>
+          <li><a href="/services/software-maintenance">Software maintenance and technical problem solving</a></li>
+        </ul>
+      </nav>
       <section class="contact" aria-labelledby="contact-title">
         <h2 id="contact-title">Tell us about your project</h2>
         <p>Send us the scope and the systems involved. We will tell you honestly whether we are the right fit.</p>
@@ -109,7 +132,7 @@
       <p>Software engineering studio</p>
       <p class="links"><a href="/services/salesforce-development">Salesforce</a> <a href="/services/backend-api-integration">Java and APIs</a> <a href="/services/custom-software">Web apps</a> <a href="/services/software-maintenance">Maintenance</a></p>
     </nav>
-    <p>binarybuilders.dev<br>&copy; 2026 BinaryBuilders</p>
+    <p>binarybuilders.dev &middot; <a href="/privacy">Privacy</a><br>&copy; 2026 BinaryBuilders</p>
   </footer>
 </body>
 </html>
