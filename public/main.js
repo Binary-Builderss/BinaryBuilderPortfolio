@@ -37,7 +37,7 @@ const wander = { x: -1e4, y: -1e4 };
 
 function readColors() {
   const s = getComputedStyle(document.documentElement);
-  colors = { ink: s.getPropertyValue("--muted").trim(), accent: s.getPropertyValue("--accent").trim() };
+  colors = { ink: s.getPropertyValue("--muted").trim() };
 }
 
 // Three overlapping sine waves: smooth enough to look like weather, no noise library needed.
@@ -52,7 +52,7 @@ function draw(time) {
   ctx.clearRect(0, 0, w, h);
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
-      const v = field(c, r, t);
+      const v = field(c, r, t * 1.3);
       const x = c * CELL + CELL / 2, y = r * CELL + CELL / 2;
       const d = Math.min(Math.hypot(x - wander.x, y - wander.y), Math.hypot(x - pointer.x, y - pointer.y));
       const near = d < radius;
@@ -60,9 +60,9 @@ function draw(time) {
       const fade = Math.min(1, Math.max(0, (0.85 * h - y) / (0.55 * h)));
       if (!near && (v < 0.2 || fade === 0)) continue;
       const i = r * cols + c;
-      if (Math.random() < (near ? 0.15 : 0.006)) bits[i] ^= 1;
+      if (Math.random() < (near ? 0.15 : 0.01)) bits[i] ^= 1;
       ctx.globalAlpha = near ? 0.9 - (d / radius) * 0.6 : (v - 0.2) * 0.45 * fade;
-      ctx.fillStyle = near ? colors.accent : colors.ink;
+      ctx.fillStyle = colors.ink; // all grey: the highlight only differs in opacity
       ctx.fillText(bits[i] ? "1" : "0", x, y);
     }
   }
