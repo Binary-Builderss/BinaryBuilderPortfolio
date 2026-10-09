@@ -1,7 +1,7 @@
 """Writes every HTML page and the sitemap in public/, in English and Italian.
 
 The site has no build step: run `python3 scripts/build_pages.py` after editing copy here, then commit the output.
-English lives at /, /services/<slug>, /about and /privacy; Italian at /it/, /it/servizi/<slug>, /it/chi-siamo and /it/privacy.
+English lives at /, /services/<slug>, /about, /privacy and one page per founder; Italian under /it/ with the same pages (/it/servizi/<slug>, /it/chi-siamo).
 Each language also gets a 404.html, which Cloudflare serves for unknown paths.
 """
 import json
@@ -306,7 +306,10 @@ ABOUT = {
       <h2>A small team, on purpose</h2>
       <p>We are two engineers, not a large consultancy. You talk directly with the people writing the code, ownership is clear and delivery stays focused. We work best on clearly scoped projects, technical integrations, targeted development tasks and ongoing maintenance, either directly with companies or as subcontractors for agencies and consulting partners.</p>
       <h2>The team</h2>
-      <p>Giuseppe Scappaticci and Michele Sabatino.</p>""",
+      <ul class="more-list">
+        <li><a href="/giuseppe-scappaticci">Giuseppe Scappaticci</a></li>
+        <li><a href="/michele-sabatino">Michele Sabatino</a></li>
+      </ul>""",
     },
     "it": {
         "title": "Chi siamo | BinaryBuilders",
@@ -329,9 +332,65 @@ ABOUT = {
       <h2>Un team piccolo, per scelta</h2>
       <p>Siamo due ingegneri, non una grande società di consulenza. Parlate direttamente con chi scrive il codice, le responsabilità sono chiare e la consegna resta concentrata. Lavoriamo al meglio su progetti con un perimetro chiaro, integrazioni tecniche, attività di sviluppo mirate e manutenzione continuativa, sia direttamente con le aziende sia in subappalto per agenzie e partner di consulenza.</p>
       <h2>Il team</h2>
-      <p>Giuseppe Scappaticci e Michele Sabatino.</p>""",
+      <ul class="more-list">
+        <li><a href="/it/giuseppe-scappaticci">Giuseppe Scappaticci</a></li>
+        <li><a href="/it/michele-sabatino">Michele Sabatino</a></li>
+      </ul>""",
     },
 }
+
+# Facts given by Giuseppe and Michele (2026-10-09). Written in the first person: each page is that person's own.
+PEOPLE = [
+    {
+        "slug": "giuseppe-scappaticci", "name": "Giuseppe Scappaticci", "first": "Giuseppe",
+        "github": "https://github.com/Leixien",
+        "en": {
+            "title": "Giuseppe Scappaticci | Software engineer, BinaryBuilders",
+            "desc": "Giuseppe Scappaticci, co-founder of BinaryBuilders. Software engineer since 2021, previously a Salesforce and backend consultant at Accenture.",
+            "lede": "I founded BinaryBuilders with Michele Sabatino. I have worked as a software engineer since 2021.",
+            "background": "I worked as a consultant at Accenture, developing Salesforce solutions and backend services on enterprise projects. I bring that experience with CRM processes and the systems around them to BinaryBuilders.",
+        },
+        "it": {
+            "title": "Giuseppe Scappaticci | Software engineer, BinaryBuilders",
+            "desc": "Giuseppe Scappaticci ha fondato BinaryBuilders con Michele Sabatino. Software engineer dal 2021, in precedenza consulente Salesforce e backend in Accenture.",
+            "lede": "Ho fondato BinaryBuilders insieme a Michele Sabatino. Lavoro come software engineer dal 2021.",
+            "background": "Ho lavorato come consulente in Accenture, sviluppando soluzioni Salesforce e servizi backend su progetti enterprise. Porto in BinaryBuilders questa esperienza con i processi CRM e i sistemi che li circondano.",
+        },
+    },
+    {
+        "slug": "michele-sabatino", "name": "Michele Sabatino", "first": "Michele",
+        "github": "https://github.com/mennenne",
+        "en": {
+            "title": "Michele Sabatino | Software engineer, BinaryBuilders",
+            "desc": "Michele Sabatino, co-founder of BinaryBuilders. Working in software since 2021, from cybersecurity to Java development for companies in Campania.",
+            "lede": "I founded BinaryBuilders with Giuseppe Scappaticci. I have worked in software since 2021.",
+            "background": "I started my career in cybersecurity, then moved to Java development, working for two companies in Campania.",
+        },
+        "it": {
+            "title": "Michele Sabatino | Software engineer, BinaryBuilders",
+            "desc": "Michele Sabatino ha fondato BinaryBuilders con Giuseppe Scappaticci. Nel software dal 2021: dalla cybersecurity allo sviluppo Java per aziende campane.",
+            "lede": "Ho fondato BinaryBuilders insieme a Giuseppe Scappaticci. Lavoro nel software dal 2021.",
+            "background": "Ho iniziato nella cybersecurity, poi ho scelto lo sviluppo Java, lavorando per due aziende campane.",
+        },
+    },
+]
+
+PEOPLE_UI = {
+    "en": {"background": "Background", "work": "At BinaryBuilders", "work_p": "{other} and I both work across every service we offer:",
+           "langs": "Languages and location", "langs_p": "Italian (native) and English (C1). I am from the Agro Nolano area, near Naples, Italy.",
+           "links": "Profiles", "team": "The team"},
+    "it": {"background": "Percorso", "work": "In BinaryBuilders", "work_p": "Io e {other} lavoriamo entrambi su tutti i servizi che offriamo:",
+           "langs": "Lingue e provenienza", "langs_p": "Italiano (madrelingua) e inglese (C1). Sono dell'Agro Nolano, vicino a Napoli.",
+           "links": "Profili", "team": "Il team"},
+}
+
+
+def person_path(lang, p):
+    return UI[lang]["home"] + p["slug"]
+
+
+def person_id(p):
+    return f"{BASE}/{p['slug']}#person"
 
 ORG_LD = {
     "@context": "https://schema.org",
@@ -345,7 +404,8 @@ ORG_LD = {
             "logo": f"{BASE}/assets/apple-touch-icon.png",
             "email": EMAIL,
             "description": "Independent software engineering team building Java and Spring Boot backends, Salesforce solutions, React and Next.js applications, and system integrations.",
-            "founder": [{"@type": "Person", "name": "Giuseppe Scappaticci"}, {"@type": "Person", "name": "Michele Sabatino"}],
+            "founder": [{"@type": "Person", "@id": person_id(p), "name": p["name"], "url": f"{BASE}/{p['slug']}", "sameAs": [p["github"]]}
+                        for p in PEOPLE],
             "knowsAbout": ["Java", "Spring Boot", "REST API design", "Microservices", "Go", "C#", "C++", "React", "Next.js", "TypeScript",
                            "Salesforce", "Apex", "Salesforce Flow", "Lightning Web Components", "System integration", "Business process automation"],
         },
@@ -558,6 +618,37 @@ def about(lang):
                     alternates[ui["other"]], content)
 
 
+def person(lang, p):
+    ui, t, pu = UI[lang], p[lang], PEOPLE_UI[lang]
+    path = person_path(lang, p)
+    alternates = {l: person_path(l, p) for l in UI}
+    other = next(q["first"] for q in PEOPLE if q is not p)
+    ld = {"@context": "https://schema.org", "@type": "ProfilePage", "url": BASE + path, "inLanguage": lang,
+          "mainEntity": {"@type": "Person", "@id": person_id(p), "name": p["name"], "jobTitle": "Software engineer",
+                         "worksFor": {"@id": f"{BASE}/#org"}, "sameAs": [p["github"]], "knowsLanguage": ["it", "en"]}}
+    content = f"""      <p class="crumb"><a href="{ui["home"]}">BinaryBuilders</a> / <a href="{ui["about"]}">{ui["about_label"]}</a></p>
+      <h1>{p["name"]}</h1>
+      <p class="lede">{t["lede"]}</p>
+      <h2>{pu["background"]}</h2>
+      <p>{t["background"]}</p>
+      <h2>{pu["work"]}</h2>
+      <p>{pu["work_p"].format(other=other)}</p>
+      {services_list(lang)}
+      <h2>{pu["langs"]}</h2>
+      <p>{pu["langs_p"]}</p>
+      <h2>{pu["links"]}</h2>
+      <ul class="more-list">
+          <li><a href="{p["github"]}" rel="me">GitHub</a></li>
+        </ul>
+      <section class="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">{ui["contact_h"]}</h2>
+        <p>{ui["contact_p"]}</p>
+        {ctas(lang)}
+      </section>"""
+    return doc_page(lang, head(lang, t["title"], t["desc"], path, [JB, MARTIAN], None, alternates, ld),
+                    alternates[ui["other"]], content)
+
+
 def not_found(lang):
     ui = UI[lang]
     content = f"""      <h1>{ui["nf_h1"]}</h1>
@@ -586,6 +677,9 @@ for lang in UI:
         assert len(p["title"]) <= 60 and len(p["desc"]) <= 160, (p["slug"], len(p["title"]), len(p["desc"]))
         urls.append(write(ui["services"] + p["slug"], service(lang, s)))
     urls.append(write(ui["about"], about(lang)))
+    for p in PEOPLE:
+        assert len(p[lang]["title"]) <= 60 and len(p[lang]["desc"]) <= 160, (p["slug"], lang, len(p[lang]["title"]), len(p[lang]["desc"]))
+        urls.append(write(person_path(lang, p), person(lang, p)))
     urls.append(write(ui["privacy"], privacy(lang)))
     write(ui["home"] + "404", not_found(lang))  # served by Cloudflare for unknown paths, not listed in the sitemap
 
